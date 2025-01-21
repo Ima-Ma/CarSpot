@@ -1,0 +1,208 @@
+﻿
+<div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="icon-menu"></span>
+            </button>
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-search d-none d-lg-block">
+                    <div class="input-group">
+                        <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                            <span class="input-group-text" id="search">
+                                <i class="icon-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                    </div>
+                </li>
+                <li>
+                   
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                        <p class="fw-bold text-dark">Profile</p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                        @if (Context.Session.GetString("AdminEmail") != null)
+                        {
+                            <a class="dropdown-item" asp-controller="Home" asp-action="logoutadmin">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout (@Context.Session.GetString("AdminEmail"))
+                            </a>
+                        }
+                        else if (Context.Session.GetString("Brand") != null)
+                        {
+                            <a class="dropdown-item" asp-controller="Home" asp-action="logoutdealer">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout (@Context.Session.GetString("Brand"))
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-item" asp-controller="Home" asp-action="AdminLogin">
+                                <i class="ti-power-off text-primary"></i>
+                                Login As Admin
+                            </a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Login">
+                                <i class="ti-power-off text-primary"></i>
+                                Login As Dealer
+                            </a>
+                        }
+
+
+                        
+                       
+                    </div>
+                </li>
+
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="icon-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        @if (Context.Session.GetString("AdminEmail")!= null)
+        {
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index1">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements" >
+                            <i class="icon-columns menu-icon"></i>
+                            <span class="menu-title">Vehicle Brands</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="form-elements" >
+                            <ul class="nav flex-column sub-menu" >
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Add_Brand">Manage Brand</a></li>
+
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Honda">Honda</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Suzuki">Suzuki</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="BMW">BMW</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Toyota">Toyota</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+                            <i class="icon-bar-graph menu-icon"></i>
+                            <span class="menu-title">Manage Dealers</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="charts">
+                            <ul class="nav flex-column sub-menu" >
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Home" asp-action="new_dealer" >Add New Dealer</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Home" asp-action="dealer_history" >Deactive Dealers </a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Home" asp-action="active_dealer" > Active Dealers </a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Home" asp-action="all_dealers"> All Dealers </a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="User_Messages">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Users Messages</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="subs_pkg_detail">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Subscription Package </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="booking">
+                            <i class="icon-paper menu-icon"></i>
+                            <span class="menu-title">Booking Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="subscriber">
+                            <i class="icon-paper menu-icon"></i>
+                            <span class="menu-title">Subscriber Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://dashboard.tawk.to/#/chat">
+                            <i class="icon-paper menu-icon"></i>
+                            <span class="menu-title">Live Chat</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        }
+        @if (Context.Session.GetString("Brand") != null)
+        {
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index1">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link"asp-controller="Home" asp-action="dealercar_show">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Manage Vehicles</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="automobiles">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Automobiles</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="launch_deals">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Add Deals</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="viewdeales">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Manage Deals</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="booking_show">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">Manage Bookings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="View_Announcement">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">View Announcements</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="myprofile">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">My Profile</span>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </nav>
+        }

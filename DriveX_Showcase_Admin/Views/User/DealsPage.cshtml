@@ -1,0 +1,253 @@
+﻿@Html.Partial("Layout")
+@Html.Partial("_Header")
+@{
+    Layout = null;
+}
+@model IEnumerable<DriveX_Showcase_Admin.Models.All_Deals>
+
+@{
+    var hondacars = ViewBag.Honda_Data as List<DriveX_Showcase_Admin.Models.Honda>;
+    var bmwcars = ViewBag.BMW_Data as List<DriveX_Showcase_Admin.Models.BMW>;
+    var toyotacars = ViewBag.Toyota_Data as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var suzukicars = ViewBag.Suzuki_Data as List<DriveX_Showcase_Admin.Models.Suzuki>;
+}
+
+<main class="main min-vh-60" id="top">
+    <section class="deals-section">
+        <div class="container" style="margin-top:-100px;">
+            <h2 class=" text-uppercase fw-light my-5 text-center">Current Car Deals</h2>
+            <div class="row">
+                @foreach (var deal in Model)
+                {
+                    var car1 = (DriveX_Showcase_Admin.Models.Honda)null;
+                    var car2 = (DriveX_Showcase_Admin.Models.BMW)null;
+                    var car3 = (DriveX_Showcase_Admin.Models.Toyata)null;
+                    var car4 = (DriveX_Showcase_Admin.Models.Suzuki)null;
+
+                    if (hondacars != null)
+                    {
+                        car1 = hondacars.FirstOrDefault(x => x.CarName == deal.CarName);
+                    }
+
+                    if (car2 == null && bmwcars != null)
+                    {
+                        car2 = bmwcars.FirstOrDefault(x => x.CarName == deal.CarName);
+                    }
+
+                    if (car3 == null && toyotacars != null)
+                    {
+                        car3 = toyotacars.FirstOrDefault(x => x.CarName == deal.CarName);
+                    }
+
+                    if (car4 == null && suzukicars != null)
+                    {
+                        car4 = suzukicars.FirstOrDefault(x => x.CarName == deal.CarName);
+                    }
+
+                    // If car is found, display the card
+                    if (car1 != null)
+                    {
+                        <div class="col-lg-4">
+                            <div class="card deal-card mb-4">
+                                <div class="image-container position-relative">
+                                    <img class="card-img-top" src="@Url.Content("~/car_images/" + car1.Image1)" alt="Car Deal Image">
+                                    <div class="discount-tag position-absolute top-0 left-0 bg-danger text-white p-2">
+                                        @deal.Discount_Percent% OFF
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">@deal.CarName</h5>
+                                    <p class="card-text">
+                                        <i class="fa fa-tag"></i> Price: @car1.CarPrice
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-user"></i> Dealer: @deal.Dealer_Name
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-gas-pump"></i> Fuel Type: @car1.FuelType
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-tachometer-alt"></i> Mileage: @car1.Mileage km/l
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-calendar"></i> Valid Till: @deal.Till_Date.ToString("dd MMM yyyy")
+                                    </p>
+                                    <a asp-controller="User" asp-action="HondaDiscover" asp-route-id="@car1.Id" class="btn btn-outline-dark w-100 mt-3">
+                                        <i class="fa fa-info-circle"></i> Discover
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    if (car2 != null)
+                    {
+                        <div class="col-lg-4">
+                            <div class="card deal-card mb-4">
+                                <div class="image-container position-relative">
+                                    <img class="card-img-top" src="@Url.Content("~/car_images/" + car2.Image1)" alt="Car Deal Image">
+                                    <div class="discount-tag position-absolute top-0 left-0 bg-danger text-white p-2">
+                                        @deal.Discount_Percent% OFF
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">@deal.CarName</h5>
+                                    <p class="card-text">
+                                        <i class="fa fa-tag"></i> Price: @car2.CarPrice
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-user"></i> Dealer: @deal.Dealer_Name
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-gas-pump"></i> Fuel Type: @car2.FuelType
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-tachometer-alt"></i> Mileage: @car2.Mileage km/l
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-calendar"></i> Valid Till: @deal.Till_Date.ToString("dd MMM yyyy")
+                                    </p>
+                                    <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@car2.Id" class="btn btn-outline-dark w-100 mt-3">
+                                        <i class="fa fa-info-circle"></i> Discover
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    if (car3 != null)
+                    {
+                        <div class="col-lg-4">
+                            <div class="card deal-card mb-4">
+                                <div class="image-container position-relative">
+                                    <img class="card-img-top" src="@Url.Content("~/car_images/" + car3.Image1)" alt="Car Deal Image">
+                                    <div class="discount-tag position-absolute top-0 left-0 bg-danger text-white p-2">
+                                        @deal.Discount_Percent% OFF
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">@deal.CarName</h5>
+                                    <p class="card-text">
+                                        <i class="fa fa-tag"></i> Price: @car3.CarPrice
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-user"></i> Dealer: @deal.Dealer_Name
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-gas-pump"></i> Fuel Type: @car3.FuelType
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-tachometer-alt"></i> Mileage: @car3.Mileage km/l
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-calendar"></i> Valid Till: @deal.Till_Date.ToString("dd MMM yyyy")
+                                    </p>
+                                    <a asp-controller="User" asp-action="ToyotaDiscover" asp-route-id="@car3.Id" class="btn btn-outline-dark w-100 mt-3">
+                                        <i class="fa fa-info-circle"></i> Discover
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    if (car4 != null)
+                    {
+                        <div class="col-lg-4">
+                            <div class="card deal-card mb-4">
+                                <div class="image-container position-relative">
+                                    <img class="card-img-top" src="@Url.Content("~/car_images/" + car4.Image1)" alt="Car Deal Image">
+                                    <div class="discount-tag position-absolute top-0 left-0 bg-danger text-white p-2">
+                                        @deal.Discount_Percent% OFF
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">@deal.CarName</h5>
+                                    <p class="card-text">
+                                        <i class="fa fa-tag"></i> Price: @car4.CarPrice
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-user"></i> Dealer: @deal.Dealer_Name
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-gas-pump"></i> Fuel Type: @car4.FuelType
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-tachometer-alt"></i> Mileage: @car4.Mileage km/l
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="fa fa-calendar"></i> Valid Till: @deal.Till_Date.ToString("dd MMM yyyy")
+                                    </p>
+                                    <a asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@car4.Id" class="btn btn-outline-dark w-100 mt-3">
+                                        <i class="fa fa-info-circle"></i> Discover
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+</main>
+
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")
+
+
+ <style>
+    /* Styling for the cards */
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: transparent;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+    .image-container {
+        position: relative;
+    }
+
+    .discount-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: red;
+        color: white;
+        margin-top:20px;
+        font-weight: bold;
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card-text {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .btn-outline-dark {
+        border: 1px solid #333;
+        color: #333;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #333;
+            color: white;
+        }
+
+                                    </style>

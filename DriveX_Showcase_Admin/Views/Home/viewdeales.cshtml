@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DriveX_Showcase_Admin.Models.All_Deals>
+@{
+    var dealername = ViewBag.dealername as DriveX_Showcase_Admin.Models.Dealer_Account;
+}
+@Html.Partial("Header")
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Deals</h4>
+                    <p class="card-description">Deals Automobiles !</p>
+
+                    <div class="table">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Vehicle Name</th>
+                                    <th>Discount Percent</th>
+                                    <th>Dealer Name</th>
+                                    <th>Till Date</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehicleTableBody">
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.CarName</td>
+                                        <td>@item.Discount_Percent</td>
+                                        <td>@item.Dealer_Name</td>
+                                        <td>@item.Till_Date</td>
+                                        <td>
+                                            <a asp-controller="Home" asp-action="deletedeals" asp-route-id="@item.Id" asp-route-CarName="@item.CarName" asp-route-Brand="@dealername.selected_brand" class="btn btn-primary">Delete Deal Now</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '@TempData["SuccessMessage"]',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}

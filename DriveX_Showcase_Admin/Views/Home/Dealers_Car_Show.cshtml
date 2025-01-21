@@ -1,0 +1,22 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.BMW>
+<table class="table">
+
+
+<tr>
+    <th>Car name</th>
+    <th>Car Image</th>
+    <th>Edit</th>
+    <th>Delete</th>
+</tr>
+    @foreach(var items in Model)
+    {
+        
+    <tr>
+    <td>@items.CarName</td>
+    <td><img src="/car_images/@items.Image1" /></td>
+    <td><a asp-controller="Home" asp-action="Edit_car_dealer" asp-route-id="@items.Id">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete_car_dealer" asp-route-id="@items.Id"></a></td>
+    </tr>
+       }
+</table>

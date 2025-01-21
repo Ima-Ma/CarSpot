@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DriveX_Showcase_Admin.Models.Subscribers>
+@Html.Partial("Header")
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-10 mx-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Car Spot Subscribers</h4>
+                    <div class="table">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>User Email</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscriberTableBody">
+                                <!-- Rows will be dynamically inserted by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                    <!-- Pagination Buttons -->
+                    <div class="pagination-controls">
+                        <button id="prevBtn" class="btn btn-primary" onclick="prevPage()">Previous</button>
+                        <button id="nextBtn" class="btn btn-primary" onclick="nextPage()">Next</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fetch the subscriber data from the Razor model
+    const subscribers = @Html.Raw(Json.Serialize(Model));
+
+    // Pagination variables
+    const rowsPerPage = 4;
+    let currentPage = 1;
+
+    // Function to render the table
+    function renderTable() {
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+        const paginatedData = subscribers.slice(startIndex, endIndex);
+
+        const tableBody = document.getElementById('subscriberTableBody');
+        tableBody.innerHTML = '';
+
+        paginatedData.forEach((subscriber) => {
+            const row = `
+                <tr>
+                    <td>${subscriber.id}</td>
+                    <td>${subscriber.email}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+
+        updatePaginationInfo();
+    }
+
+    // Update pagination info
+    function updatePaginationInfo() {
+        const totalPages = Math.ceil(subscribers.length / rowsPerPage);
+        document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+        document.getElementById('prevBtn').disabled = currentPage === 1;
+        document.getElementById('nextBtn').disabled = currentPage === totalPages;
+    }
+
+    // Next Page
+    function nextPage() {
+        const totalPages = Math.ceil(subscribers.length / rowsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable();
+        }
+    }
+
+    // Previous Page
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    }
+
+    // Initial Render
+    renderTable();
+</script>

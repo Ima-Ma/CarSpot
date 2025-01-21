@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35507.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriveX_Showcase_Admin", "DriveX_Showcase_Admin\DriveX_Showcase_Admin.csproj", "{F56BFDD1-82AE-4484-B938-D48B8B0DFAED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F56BFDD1-82AE-4484-B938-D48B8B0DFAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56BFDD1-82AE-4484-B938-D48B8B0DFAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56BFDD1-82AE-4484-B938-D48B8B0DFAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56BFDD1-82AE-4484-B938-D48B8B0DFAED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8D36820-23CB-457E-A3EA-B56F9611E0F8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,174 @@
+﻿@model IEnumerable<DriveX_Showcase_Admin.Models.BMW>
+@Html.Partial("Header")
+<div class="main-panel">
+    <div class="content-wrapper">
+        <!-- Search Field -->
+        <div class="search-container">
+            <input type="text" id="searchField" placeholder="Search BMW Cars..." class="search-input" onkeyup="searchCars()" />
+        </div>
+        <div id="noResultsMessage" class="no-results-message" style="display: none;">
+            No cars found matching your search.
+        </div>
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>CarName</th>
+                                    <th>CarPrice</th>
+                                    <th>Read More</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carTableBody">
+                                @foreach (var items in Model)
+                                {
+                                    <tr>
+                                        <td>@items.Id</td>
+                                        <td>@items.CarName</td>
+                                        <td>@items.CarPrice</td>
+                                        <td>
+                                            <a class="btn btn-outline-primary" asp-controller="Home" asp-action="BMWReadmore" asp-route-id="@items.Id">Read More</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-outline-danger" asp-controller="Home" asp-action="BMWDelete" asp-route-id="@items.Id">DELETE</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <!-- Pagination Buttons -->
+                        <div class="pagination-controls">
+                            <button class="btn btn-primary" onclick="previousPage()">Previous</button>
+                            <button class="btn btn-primary" onclick="nextPage()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("Footer")
+</div>
+<script>
+    const rowsPerPage = 4; // Number of rows to display per page
+    let currentPage = 1;
+    let isSearching = false; // Flag to indicate if search is active
+
+    function updateTable() {
+        const tableRows = document.querySelectorAll('#carTableBody tr');
+        const totalRows = tableRows.length;
+
+        if (isSearching) return; // Skip pagination logic if searching
+
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+
+        // Show only the rows for the current page
+        tableRows.forEach((row, index) => {
+            if (index >= start && index < end) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Update pagination buttons
+        document.querySelector('.pagination-controls button:nth-child(1)').disabled = currentPage === 1;
+        document.querySelector('.pagination-controls button:nth-child(2)').disabled = end >= totalRows;
+    }
+
+    function nextPage() {
+        const tableRows = document.querySelectorAll('#carTableBody tr');
+        if (currentPage * rowsPerPage < tableRows.length) {
+            currentPage++;
+            updateTable();
+        }
+    }
+
+    function previousPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            updateTable();
+        }
+    }
+
+    function searchCars() {
+        const searchValue = document.getElementById('searchField').value.toLowerCase();
+        const tableRows = document.querySelectorAll('#carTableBody tr');
+        let matchFound = false;
+
+        // Filter rows based on search
+        tableRows.forEach(row => {
+            const carName = row.cells[1].textContent.toLowerCase();
+            if (carName.includes(searchValue)) {
+                row.style.display = '';
+                matchFound = true;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        if (matchFound) {
+            noResultsMessage.style.display = 'none';
+            isSearching = true; // Disable pagination during search
+        } else {
+            noResultsMessage.style.display = 'block';
+        }
+
+        // Reset pagination if the search is cleared
+        if (searchValue === '') {
+            isSearching = false;
+            currentPage = 1;
+            updateTable();
+        }
+    }
+
+    // Initialize the table display on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        updateTable();
+    });
+</script>
+
+<style>
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        width: 70%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .no-results-message {
+        color: #333;
+        font-size: 16px;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .pagination-controls {
+        justify-content: space-between;
+        justify-self: right;
+        margin-top: 10px;
+    }
+
+    .table-bordered th, .table-bordered td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    .table-bordered th{
+        color:white;
+        background-color: #6610f2;
+    }
+
+</style>

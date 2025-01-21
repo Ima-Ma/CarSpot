@@ -1,0 +1,25 @@
+﻿@model Booking_Form
+@Html.Partial("Header")
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">CarName</label>
+                        <input type="text" class="form-control" value="@Model.car_name" name="CarName" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" value="@Model.user_email" name="email" readonly>
+                        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Reply</label>
+                        <textarea class="form-control" name="reply" rows="4" placeholder="Type your reply here..."></textarea>
+                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

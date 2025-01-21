@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DriveX_Showcase_Admin.Models.Booking_Form>
+@Html.Partial("Header")
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Vehicles Booking</h4>
+                    <p class="card-description">Booking Automobiles!</p>
+
+                    <div class="table">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle ID</th>
+                                    <th>Vehicle Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Status</th>
+                                    <th>Send Mail</th>
+                                    <th>Mark As Confirm</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehicleTableBody">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.id</td>
+                                        <td>@item.car_name</td>
+                                        <td>@item.user_email</td>
+                                        <td>@item.phone_number</td>
+                                        <td>@item.status</td>
+                                        <td>
+                                            <a asp-controller="Home" asp-action="Send_Mail" asp-route-id="@item.id" class="btn btn-outline-primary" >Send Mail</a>
+                                        </td>
+                                           <td>
+                                            <a asp-controller="Home" asp-action="MarkAsConfirm" asp-route-id="@item.id" class="btn btn-primary">Mark As Confirm</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '@TempData["SuccessMessage"]',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}

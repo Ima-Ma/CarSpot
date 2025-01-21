@@ -1,0 +1,90 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Packages>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto my-3">
+                    <a asp-controller="Home" asp-action="add_new_package" class="btn btn-primary w-100">Add More Packages</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card position-relative">
+                    <div class="card-body">
+                        <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    @foreach(var item in Model)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                                                <div class="ml-xl-4 mt-3">
+                                                    <hr />
+                                                    <p class="card-title">@item.package_name</p>
+                                                    <h3 class="font-weight-500 mb-xl-4 text-primary">@item.price</h3>
+                                                    <p class="mb-2 mb-xl-0">Duration: @item.duration <br /> Ideal For:@item.idea_for </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-xl-8">
+                                                <div class="row">
+                                                    <div class="col-md-12 border-right">
+                                                        <div class="table-responsive mb-3 mb-md-0 mt-3">
+                                                            <hr />
+                                                            <table class="table table-borderless report-table">
+                                                                <p class="card-title">Features</p>
+                                                                <tr>
+                                                                    <td class="text-muted">@item.feature_1</td>
+                                                                    <td class="w-100 px-0">
+                                                                        <div class="progress progress-md mx-4">
+                                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted">@item.feature_2</td>
+                                                                    <td class="w-100 px-0">
+                                                                        <div class="progress progress-md mx-4">
+                                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted">@item.feature_3</td>
+                                                                    <td class="w-100 px-0">
+                                                                        <div class="progress progress-md mx-4">
+                                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                  
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <script>
+                    Swal.fire({
+                        title: 'Success!',
+                        text: '@TempData["SuccessMessage"]',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+            }
+    </div>
+    @Html.Partial("Footer")

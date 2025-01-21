@@ -1,0 +1,160 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Announcement>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fas fa-bullhorn text-warning"></i> Add Announcement</h4>
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="announcementText">Announcement</label>
+                                <textarea required class="form-control" name="announcement" id="announcementText" name="announcementText" rows="4" placeholder="Write your announcement here..." required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="fileUpload">Add Image/File (Optional)</label>
+                                <input required type="file" name="attachment" class="form-control-file" id="fileUpload" name="fileUpload" accept="image/*, .pdf, .doc, .docx">
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary w-100 ">
+                                    <i class="fas fa-paper-plane"></i> Post Now
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fas fa-bullhorn text-warning"></i> Announcements</h4>
+                        <div class="announcement-container">
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var announcement in Model)
+                                {
+                                    <div class="announcement-message">
+                                        <div class="message-header">
+                                            <i class="fas fa-user-shield text-primary"></i>
+                                            <span class="admin-label">Admin</span>
+                                        </div>
+                                        <div class="message-body">
+                                            <p class="announcement-text">@announcement.announcement</p>
+                                            @if (announcement.attachment == "No Attachment")
+                                            {
+                                                <span class="attachment-link text-muted">
+                                                    <i class="fas fa-paperclip"></i> No Attachment
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <a href="~/attachments/@announcement.attachment" target="_blank" class="attachment-link">
+                                                    <i class="fas fa-paperclip"></i> View Attachment
+                                                </a>
+                                                
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p class="text-muted">No announcements to show at the moment.</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Font Awesome -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+            <!-- Optional Custom Styling -->
+            <style>
+                .card {
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .announcement-container {
+                    max-height: 400px;
+                    overflow-y: auto;
+                    padding: 10px;
+                }
+
+                .announcement-message {
+                    border-bottom: 1px solid #eee;
+                    padding: 15px 10px;
+                }
+
+                .message-header {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 8px;
+                }
+
+                .admin-label {
+                    font-weight: bold;
+                    margin-left: 8px;
+                    color: #007bff;
+                }
+
+                .timestamp {
+                    margin-left: auto;
+                    font-size: 0.85rem;
+                    color: #6c757d;
+                }
+
+                .message-body {
+                    padding-left: 30px;
+                }
+
+                .announcement-text {
+                    margin-bottom: 8px;
+                }
+
+                .attachment-link {
+                    color: #007bff;
+                    text-decoration: none;
+                }
+
+                    .attachment-link:hover {
+                        text-decoration: underline;
+                    }
+            </style>
+
+        </div>
+    </div>
+    @Html.Partial("Footer")
+</div>
+
+<!-- Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- Optional custom styling -->
+<style>
+    .card {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border: none;
+        border-radius: 8px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+   
+</style>
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '@TempData["SuccessMessage"]',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}

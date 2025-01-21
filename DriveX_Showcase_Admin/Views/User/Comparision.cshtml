@@ -1,0 +1,241 @@
+﻿@{
+    var hondacars = ViewBag.Honda_Data as List<DriveX_Showcase_Admin.Models.Honda>;
+    var bmwcars = ViewBag.BMW_Data as List<DriveX_Showcase_Admin.Models.BMW>;
+    var toyotacars = ViewBag.Toyota_Data as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var suzukicars = ViewBag.Suzuki_Data as List<DriveX_Showcase_Admin.Models.Suzuki>;
+}
+@{
+    Layout = null;
+}
+@Html.Partial("Layout")
+@Html.Partial("_Header")
+<main class="main min-vh-100" id="top">
+    <section class="car-comparison-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-car"></i> Car Comparison</h2>
+            <div class="row">
+                <!-- Left Section -->
+                <div class="col-lg-6 car-selection">
+                    <h6 class="selection-title"><i class="fas fa-search"></i> Choose a Car</h6>
+                    <select class="form-select custom-select" id="carNameFilterLeft" aria-label="Select Car">
+                        <option value="">Select a car</option>
+                        @foreach (var car in hondacars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (Honda)
+                            </option>
+                        }
+                        @foreach (var car in bmwcars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (BMW)
+                            </option>
+                        }
+                        @foreach (var car in toyotacars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (Toyota)
+                            </option>
+                        }
+                        @foreach (var car in suzukicars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (Suzuki)
+                            </option>
+                        }
+                    </select>
+                    <div class="comparison-details">
+                        <img id="ImageLeft" src="" alt="Car Image" class="comparison-image" />
+                        <h5 id="PriceLeft"><i class="fas fa-tag"></i> Price:</h5>
+                        <h5 id="MileageLeft"><i class="fas fa-road"></i> Mileage:</h5>
+                        <h5 id="EngineLeft"><i class="fas fa-cogs"></i> Engine Capacity:</h5>
+                    </div>
+                </div>
+                <!-- Right Section -->
+                <div class="col-lg-6 car-selection">
+                    <h6 class="selection-title"><i class="fas fa-search"></i> Choose a Car</h6>
+                    <select class="form-select custom-select" id="carNameFilterRight" aria-label="Select Car">
+                        <option value="">Select a car</option>
+                        @foreach (var car in hondacars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (Honda)
+                            </option>
+                        }
+                        @foreach (var car in bmwcars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (BMW)
+                            </option>
+                        }
+                        @foreach (var car in toyotacars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (Toyota)
+                            </option>
+                        }
+                        @foreach (var car in suzukicars)
+                        {
+                            <option value="@car.CarName"
+                                    data-price="@car.CarPrice"
+                                    data-mileage="@car.Mileage"
+                                    data-engine="@car.EngineCapacity"
+                                    data-image="@car.Image1">
+                                @car.CarName (Suzuki)
+                            </option>
+                        }
+                    </select>
+                    <div class="comparison-details">
+                        <img id="ImageRight" src="" alt="Car Image" class="comparison-image" />
+                        <h5 id="PriceRight"><i class="fas fa-tag"></i> Price:</h5>
+                        <h5 id="MileageRight"><i class="fas fa-road"></i> Mileage:</h5>
+                        <h5 id="EngineRight"><i class="fas fa-cogs"></i> Engine Capacity:</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<style>
+        <style >
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .car-comparison-section {
+            padding: 40px 0;
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .selection-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+            transition: border-color 0.3s ease;
+            color: #333;
+        }
+
+            .form-select:focus {
+                border-color: #007bff;
+                outline: none;
+            }
+
+        .custom-select:hover {
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+
+        .comparison-details {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .comparison-image {
+            width: 80%;
+            max-height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .comparison-image:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+        h5 {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+            h5 i {
+                margin-right: 5px;
+                color: #007bff;
+            }
+    </style>
+
+</style>
+</main>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    function setupCarFilter(filterId, imageId, priceId, mileageId, engineId) {
+        const carFilter = document.getElementById(filterId);
+        const carImage = document.getElementById(imageId);
+        const carPrice = document.getElementById(priceId);
+        const carMileage = document.getElementById(mileageId);
+        const carEngine = document.getElementById(engineId);
+
+        carFilter.addEventListener("change", function () {
+            const selectedOption = carFilter.options[carFilter.selectedIndex];
+            if (selectedOption.value) {
+                carImage.src = `/car_images/${selectedOption.getAttribute("data-image")}`;
+                carPrice.textContent = `Price: ${selectedOption.getAttribute("data-price")}`;
+                carMileage.textContent = `Mileage: ${selectedOption.getAttribute("data-mileage")}`;
+                carEngine.textContent = `Engine Capacity: ${selectedOption.getAttribute("data-engine")}`;
+            } else {
+                carImage.src = "";
+                carPrice.textContent = "Price:";
+                carMileage.textContent = "Mileage:";
+                carEngine.textContent = "Engine Capacity:";
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setupCarFilter("carNameFilterLeft", "ImageLeft", "PriceLeft", "MileageLeft", "EngineLeft");
+        setupCarFilter("carNameFilterRight", "ImageRight", "PriceRight", "MileageRight", "EngineRight");
+    });
+</script>
+
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")

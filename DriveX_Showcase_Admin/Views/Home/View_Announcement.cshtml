@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DriveX_Showcase_Admin.Models.Announcement>
+@Html.Partial("Header")
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="page-title"><i class="fas fa-bullhorn text-warning"></i>Announcements</h2>
+                <div class="announcement-container">
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="announcement-card">
+                                <p class="announcement-text">@item.announcement</p>
+                                @if (item.attachment == "No Attachment")
+                                {
+                                    <span class="attachment-link text-muted">
+                                        <i class="fas fa-paperclip"></i> No Attachment
+                                    </span>
+                                }
+                                else
+                                {
+                                    <a href="~/attachments/@item.attachment" target="_blank" class="attachment-link">
+                                        <i class="fas fa-paperclip"></i> View Attachment
+                                    </a>
+
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="no-announcements">No announcements available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .announcement-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .announcement-card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .announcement-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .announcement-text {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .announcement-link {
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .announcement-link:hover {
+            text-decoration: underline;
+        }
+
+    .no-announcements {
+        font-size: 16px;
+        color: #999;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+</style>

@@ -1,0 +1,255 @@
+﻿@model Dealer_Account
+@{
+    var alldatahonda = ViewBag.alldatahonda as List<DriveX_Showcase_Admin.Models.Honda>;
+    var alldatabmw = ViewBag.alldatabmw as List<DriveX_Showcase_Admin.Models.BMW>;
+    var alldatatoyota = ViewBag.alldatatoyota as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var alldatasuzuki = ViewBag.alldatasuzuki as List<DriveX_Showcase_Admin.Models.Suzuki>;
+}
+@{
+    Layout = null;
+}
+@Html.Partial("Layout")
+@Html.Partial("_Header")
+<main class="main min-vh-100" id="top">
+    <section class="text-center pt-0 pb-4" id="defaultGallery">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row justify-content-center">
+
+                <!-- Dealer Information Section -->
+                <div class="col-12 col-md-8 mb-4 mb-lg-5">
+                    <div class="mb-3">
+                        <h2 class="text-uppercase fw-light mb-1">Discover @Model.dealers</h2>
+                        <p class="text-uppercase fw-light text-muted mb-1"><i class="fas fa-id-card-alt"></i> @Model.dealer_IdCode</p>
+                        <h6 class="text-light-emphasis mb-2"><i class="fas fa-map-marker-alt"></i> Address: @Model.address</h6>
+                        <p class="text-muted mb-0"><i class="fas fa-calendar-day"></i> Joined on: @Model.registration_date.ToString("MMMM dd, yyyy")</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Description -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 mb-4 mb-lg-5">
+                    <div class="text-center mb-3">
+                        <h5 class="fw-normal text-light-emphasis">
+                            Discover the range of products and services offered by @Model.dealers and explore a wide selection of cars from various brands.
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Listings -->
+            <div class="row gy-4" id="User-gallery">
+                @if ((alldatasuzuki != null && alldatasuzuki.Count > 0) ||
+                (alldatabmw != null && alldatabmw.Count > 0) ||
+                (alldatahonda != null && alldatahonda.Count > 0) ||
+                (alldatatoyota != null && alldatatoyota.Count > 0))
+                {
+                    @if (alldatasuzuki != null && alldatasuzuki.Count > 0)
+                    {
+                        @foreach (var item in alldatasuzuki.Where(x=> x.Status == "Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                    <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                        @foreach (var item in alldatasuzuki.Where(x => x.Status == "No Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                    
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @if (alldatahonda != null && alldatahonda.Count > 0)
+                    {
+                        @foreach (var item in alldatahonda.Where(x => x.Status == "Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                    <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                        @foreach (var item in alldatahonda.Where(x => x.Status == "No Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                   
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @if (alldatabmw != null && alldatabmw.Count > 0)
+                    {
+                        @foreach (var item in alldatabmw.Where(x=> x.Status == "Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                    <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                        @foreach (var item in alldatabmw.Where(x => x.Status == "No Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                    
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @if (alldatatoyota != null && alldatatoyota.Count > 0)
+                    {
+                        @foreach (var item in alldatatoyota.Where(x => x.Status == "Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                    <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                        @foreach (var item in alldatatoyota.Where(x => x.Status == "No Deal"))
+                        {
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">
+                                   
+                                    <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                                </a>
+                                <div class="overflow-hidden mt-2">
+                                    <h5 class="fs-6 fw-light text-dark text-uppercase">@item.CarName</h5>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <div class="col-12 text-center">
+                        <p class="fs-6 text-dark">No cars available for this dealer. Check back later.</p>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<!-- Add these Font Awesome CSS link in the head of your layout page if not added already -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<style>
+    /* Profile Section Styling */
+    .profile-avatar img {
+        border: 3px solid #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header Styling */
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    .fw-light {
+        font-weight: lighter;
+    }
+
+    .fs-5 {
+        font-size: 1.25rem;
+    }
+
+    .fs-6 {
+        font-size: 1rem;
+    }
+
+    .fs-7 {
+        font-size: 0.875rem;
+    }
+
+    .fs-sm-4 {
+        font-size: 1.125rem;
+    }
+
+    .fs-sm-5 {
+        font-size: 1.25rem;
+    }
+
+    .fs-sm-6 {
+        font-size: 1.125rem;
+    }
+
+    .text-dark {
+        color: #343a40;
+    }
+
+    .text-light-emphasis {
+        color: #f8f9fa;
+    }
+
+    /* Text Styling */
+    .text-muted {
+        color: #6c757d;
+    }
+
+    /* Section Description Styling */
+    h5.fs-6 {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* Gallery Grid */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-md-3 {
+        width: 25%;
+    }
+
+    .col-12.text-center p {
+        font-size: 1rem;
+        color: #343a40;
+    }
+</style>
+
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")

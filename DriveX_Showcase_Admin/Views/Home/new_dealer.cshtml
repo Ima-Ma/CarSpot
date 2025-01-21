@@ -1,0 +1,125 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Brand>
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Register New Vehicle Dealer</h4>
+                    <form class="form-sample" method="post">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Dealer Name</label>
+                                    <div class="col-sm-9">
+                                        <input name="dealers" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Registration Date</label>
+                                        <div class="col-sm-9">
+                                            <input name="registration_date" type="datetime" class="form-control" />
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">First Name</label>
+                                    <div class="col-sm-9">
+                                        <input name="first_name" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Last Name</label>
+                                    <div class="col-sm-9">
+                                        <input name="last_name" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Gender</label>
+                                    <div class="col-sm-9">
+                                        <select name="gender" class="form-control">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                    <div class="col-sm-9">
+                                        <input name="date_of_birth" type="datetime" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Select Brand</label>
+                                    <div class="col-sm-9">
+                                        <select name="selected_brand" class="form-control">
+                                            @foreach (var item in Model)
+                                            {
+                                                <option value="@item.id">@item.brand_name</option>
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input name="email" type="email" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Address</label>
+                                    <div class="col-sm-9">
+                                        <input name="address" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: '@TempData["SuccessMessage"]',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            </script>
+        }
+
+        @Html.Partial("Footer")

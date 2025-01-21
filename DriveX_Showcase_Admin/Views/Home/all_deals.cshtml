@@ -1,0 +1,119 @@
+﻿@Html.Partial("Header")
+@{
+    var bmw = ViewBag.bmw as DriveX_Showcase_Admin.Models.BMW;
+    var toyota = ViewBag.toyota as DriveX_Showcase_Admin.Models.Toyata;
+    var honda = ViewBag.honda as DriveX_Showcase_Admin.Models.Honda;
+    var suzuki = ViewBag.suzuki as DriveX_Showcase_Admin.Models.Suzuki;
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                @if (bmw != null)
+                {
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">CarName</label>
+                            <input type="text" class="form-control" value="@bmw.CarName" name="CarName" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">DealerName</label>
+                            <input type="text" class="form-control" value="@Context.Session.GetString("Brand")" name="Dealer_Name" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Percent Discount</label>
+                            <input type="text" class="form-control" placeholder="Enter %" name="Discount_Percent" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Till date</label>
+                            <input type="datetime" class="form-control" name="Till_Date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand Name</label>
+                            <input type="text" class="form-control" value="BMW" name="Brand" readonly required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                }
+                else if (toyota != null)
+                {
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">CarName</label>
+                            <input type="text" class="form-control" value="@toyota.CarName" name="CarName" required readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">DealerName</label>
+                            <input type="text" class="form-control" value="@Context.Session.GetString("Brand")" required name="Dealer_Name" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Percent Discount</label>
+                            <input type="text" class="form-control" placeholder="Enter %" name="Discount_Percent" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Till date</label>
+                            <input type="datetime" class="form-control" name="Till_Date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand Name</label>
+                            <input type="text" class="form-control" value="Toyota" name="Brand" readonly required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                }
+                else if (honda != null)
+                {
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">CarName</label>
+                            <input type="text" class="form-control" value="@honda.CarName" name="CarName" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">DealerName</label>
+                            <input type="text" class="form-control" value="@Context.Session.GetString("Brand")" name="Dealer_Name" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Percent Discount</label>
+                            <input type="text" class="form-control" placeholder="Enter %" name="Discount_Percent" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Till date</label>
+                            <input type="datetime" class="form-control" name="Till_Date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand Name</label>
+                            <input type="text" class="form-control" value="Honda" name="Brand" readonly required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                }
+                else if (suzuki != null)
+                {
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">CarName</label>
+                            <input type="text" class="form-control" value="@suzuki.CarName" name="CarName" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">DealerName</label>
+                            <input type="text" class="form-control" value="@Context.Session.GetString("Brand")" name="Dealer_Name" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Percent Discount</label>
+                            <input type="text" class="form-control" placeholder="Enter %" name="Discount_Percent" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Till date</label>
+                            <input type="datetime" class="form-control" name="Till_Date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand Name</label>
+                            <input type="text" class="form-control" value="Suzuki" name="Brand" readonly required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>

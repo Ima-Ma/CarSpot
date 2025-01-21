@@ -1,0 +1,93 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Suzuki>
+<style>
+        /* Add this in your site's CSS file */
+    .car-details {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .detail-item {
+        font-size: 16px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .detail-title {
+        font-weight: bold;
+        color: #333;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    img.img-fluid {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .row {
+        margin-bottom: 30px;
+    }
+
+</style>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table pt-3">
+                        @foreach (var items in Model)
+                        {
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h1>@items.CarName</h1>
+                                    <h2>@items.CarPrice</h2>
+                                    <h3>Variant: @items.Variant</h3>
+                                    <h4>Fuel Type: @items.FuelType</h4>
+                                    <h5>Power: @items.Power</h5>
+                                    <p>@items.CarDescription</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>Dealer Name: @items.Dealer_id</p>
+                                    <img src="/car_images/@items.Image1" class="img-fluid" alt="Car Image" />
+                                    <h4>Colors: @items.Colors</h4>
+                                    <h5>Mileage: @items.Mileage</h5>
+                                </div>
+                                <div class="col-lg-12">
+                                    <!-- Ratings and Engine Details -->
+                                    <div class="car-details">
+                                        <div class="detail-item">
+                                            <span class="detail-title">Engine Capacity: </span>@items.EngineCapacity
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-title">Exterior Rating: </span>@items.RatingExterior
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-title">Comfort Rating: </span>@items.RatingComfort
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-title">Performance Rating: </span>@items.RatingPerformance
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-title">Fuel Economy Rating: </span>@items.RatingFuelEconomy
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("Footer")

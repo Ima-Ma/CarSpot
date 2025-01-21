@@ -1,0 +1,111 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.SubscriptionXPackages>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Active Dealers</h4>
+                    <p class="card-description">Details of Active Dealers</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Dealer IdCode</th>
+                                    <th>Subscription Date</th>
+                                    <th>Email</th>
+                                    <th>Send Reminder Email</th>
+                                    <th>Deactivate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="py-1">@item.dealer_IdCode</td>
+                                        <td>@item.subscription_date</td>
+                                        <td>@item.email</td>
+                                        <td>
+                                            <a data-id="@item.dealer_IdCode" onclick="sendEmail(this)" data-bs-toggle="modal" data-bs-target="#sendEmailModal" class="btn btn-primary">Send Email</a>
+                                        </td>
+                                        <td>
+                                            <a data-id="@item.dealer_IdCode" onclick="deactivateDealer(this)" data-bs-toggle="modal" data-bs-target="#deactivateModal" class="btn btn-outline-primary">Deactivate</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+</div>
+@Html.Partial("Footer")
+
+<div class="modal fade" id="sendEmailModal" tabindex="-1" aria-labelledby="sendEmailLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sendEmailLabel">Send Reminder Email</h5>
+                <a class="fw-bold text-danger" data-bs-dismiss="modal">Close</a>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to send a reminder email?</h4>
+                        <input type="hidden" id="emailIdInput" name="id" required />
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="/Home/SendEmail">
+                            <input type="hidden" id="emailIdInputForm" name="dealer_IdCode" required />
+                    <button type="submit" class="btn btn-primary">Send Email</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deactivateModal" tabindex="-1" aria-labelledby="deactivateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deactivateLabel">Deactivate Dealer</h5>
+                <a class="fw-bold text-danger" data-bs-dismiss="modal">Close</a>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to deactivate this dealer?</h4>
+                        <input type="hidden" id="deactivateIdInput" name="id" required />
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="/Home/Deactivate">
+                            <input type="hidden" id="deactivateIdInputForm" name="dealer_IdCode" required />
+                    <button type="submit" class="btn btn-primary">Deactivate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sendEmail(element) {
+        var id = element.dataset.id;
+        document.getElementById('emailIdInput').value = id;
+        document.getElementById('emailIdInputForm').value = id;
+    }
+
+    function deactivateDealer(element) {
+        var id = element.dataset.id;
+        document.getElementById('deactivateIdInput').value = id;
+        document.getElementById('deactivateIdInputForm').value = id;
+    }
+</script>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '@TempData["SuccessMessage"]',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}

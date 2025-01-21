@@ -1,0 +1,104 @@
+﻿@Html.Partial("Layout")
+@Html.Partial("_Header")
+@{
+    Layout = null;
+}
+@model IEnumerable<DriveX_Showcase_Admin.Models.Suzuki>
+
+<main class="main min-vh-100" id="top">
+    <section class="text-center pt-0 pb-4" id="defaultGallery">
+        <div class="container">
+            <div class="row gy-4" id="User-gallery">
+                <div class="col-12 mb-3 mb-lg-5">
+                    <h2 class="fs-6 fs-sm-5 text-dark text-uppercase">
+                        <span class="text-uppercase fw-light">Discover Suzuki Vehicles</span>
+                        <a href="~/User/Complete/Suzuki Complete.pdf" class="btn btn-dark w-100" download="Suzuki Complete.pdf">Download Details</a>
+
+                    </h2>
+                </div>
+
+                @foreach (var item in Model.Where(x=> x.Status == "Deal"))
+                {
+                    <div class="col-6 col-lg-4">
+                        <a asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@item.Id" data-caption="your caption">
+                            <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                            <img class="rounded img-fluid vehicle-image" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                        </a>
+                        <div class="overflow-hidden vehicle-details">
+                            <h5 class="fs-6 fw-bold mt-3 mb-1" data-zanim-xs='{"from":{"y":45},"delay":0.2}'>
+                                @item.CarName
+                            </h5>
+
+                            <a asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@item.Id" class="btn btn-outline-dark w-100 mt-4">Discover More</a>
+                        </div>
+                    </div>
+                }
+                @foreach (var item in Model.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="col-6 col-lg-4">
+                        <a asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@item.Id" data-caption="your caption">
+                            
+                            <img class="rounded img-fluid vehicle-image" src="~/car_images/@item.Image1" alt="@item.CarName" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                        </a>
+                        <div class="overflow-hidden vehicle-details">
+                            <h5 class="fs-6 fw-bold mt-3 mb-1" data-zanim-xs='{"from":{"y":45},"delay":0.2}'>
+                                @item.CarName
+                            </h5>
+
+                            <a asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@item.Id" class="btn btn-outline-dark w-100 mt-4">Discover More</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+</main>
+<style>
+    /* Add this CSS to your stylesheet (e.g., site.css or custom.css) */
+
+    /* General styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    /* Gallery Container */
+    #defaultGallery {
+        background-color: #ffffff;
+        padding: 30px 0;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Vehicle Image */
+    .vehicle-image {
+        max-height: 250px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .vehicle-image:hover {
+            transform: scale(1.05);
+        }
+
+    /* Vehicle Details */
+    .vehicle-details {
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+        .vehicle-details h5 {
+            font-size: 1.1rem;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: lighter;
+        }
+
+</style>
+
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")

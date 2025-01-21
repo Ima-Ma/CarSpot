@@ -1,0 +1,155 @@
+﻿@Html.Partial("Header")
+@{
+    var bmw = ViewBag.bmw as List<DriveX_Showcase_Admin.Models.BMW>;
+    var toyota = ViewBag.toyota as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var honda = ViewBag.honda as List<DriveX_Showcase_Admin.Models.Honda>;
+    var suzuki = ViewBag.suzuki as List<DriveX_Showcase_Admin.Models.Suzuki>;
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Vehicles</h4>
+                    <p class="card-description">Edit & Delete Automobiles!</p>
+
+                    <!-- Search Field -->
+                    <div class="mb-3">
+                        <input type="text" id="searchField" class="form-control" placeholder="Search Vehicles...">
+                    </div>
+
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle ID</th>
+                                    <th>Vehicle Name</th>
+                                    <th>Read More</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehicleTableBody">
+                                @if (bmw != null && bmw.Count > 0)
+                                {
+                                    foreach (var item in bmw)
+                                    {
+                                        <tr>
+                                            <td>@item.CarName</td>
+                                            <td>@item.CarPrice</td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="dealercar_Readmore" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                                    More
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="BMWDelete" asp-route-id="@item.Id" class="btn btn-primary">
+                                                    Delete
+                                                </a>
+                                            </td>
+                                           
+                                        </tr>
+                                    }
+                                }
+                                @if (honda != null && honda.Count > 0)
+                                {
+                                    foreach (var item in honda)
+                                    {
+                                        <tr>
+                                            <td>@item.CarName</td>
+                                            <td>@item.CarPrice</td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="dealercar_Readmore" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                                    More
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="HondaDelete" asp-route-id="@item.Id" class="btn btn-primary">
+                                                    Delete
+                                                </a>
+                                            </td>
+                                            
+                                        </tr>
+                                    }
+                                }
+                                @if (suzuki != null && suzuki.Count > 0)
+                                {
+                                    foreach (var item in suzuki)
+                                    {
+                                        <tr>
+                                            <td>@item.CarName</td>
+                                            <td>@item.CarPrice</td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="dealercar_Readmore" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                                    More
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="SuzukiDelete" asp-route-id="@item.Id" class="btn btn-primary">
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                @if (toyota != null && toyota.Count > 0)
+                                {
+                                    foreach (var item in toyota)
+                                    {
+                                        <tr>
+                                            <td>@item.CarName</td>
+                                            <td>@item.CarPrice</td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="dealercar_Readmore" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                                    More
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Home" asp-action="ToyotaDelete" asp-route-id="@item.Id" class="btn btn-primary">
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                <!-- Repeat similar for Honda, Toyota, and Suzuki -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        margin: 2px;
+    }
+
+    #searchField {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+</style>
+
+<!-- Search and Pagination Logic -->
+<script>
+    document.getElementById('searchField').addEventListener('input', function () {
+        const searchQuery = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#vehicleTableBody tr');
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(searchQuery) ? '' : 'none';
+        });
+    });
+
+    
+</script>

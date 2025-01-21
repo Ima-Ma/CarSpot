@@ -1,0 +1,48 @@
+﻿@Html.Partial("Header")
+@model Packages
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Add New Package </h4>
+                    <p class="card-description">
+                        Add New Subscription 
+                    </p>
+                    <form class="forms-sample" method="post" >
+                        <div class="form-group">
+                            <label for="exampleInputName1">Package Name</label>
+                            <input type="text" asp-for="package_name" class="form-control" id="exampleInputName1" required placeholder="Package Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Price Per $</label>
+                            <input type="text" asp-for="price" class="form-control" id="exampleInputName1" required placeholder="Price Per $">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Duration</label>
+                            <input type="text" asp-for="duration" class="form-control" id="exampleInputName1" required placeholder="Duration">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Ideal For</label>
+                            <input type="text" asp-for="idea_for" class="form-control" id="exampleInputName1" required placeholder="Ideal For">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Feature #1</label>
+                            <input type="text" asp-for="feature_1" class="form-control" id="exampleInputName1" required placeholder="Feature #1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Feature #2</label>
+                            <input type="text" asp-for="feature_2" class="form-control" id="exampleInputName1" required placeholder="Feature #2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Feature #3</label>
+                            <input type="text" asp-for="feature_3" class="form-control" id="exampleInputName1" required placeholder="Feature #3">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    @Html.Partial("Footer")

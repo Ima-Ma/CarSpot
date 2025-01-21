@@ -1,0 +1,36 @@
+﻿@Html.Partial("Header")
+<div class="main-panel">
+    <div class="content-wrapper">
+     <div class="row">
+         <h1>Select Brand In Which  You Are Going To Add Data?</h1>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Choose Brand</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="brand_name">
+                            <option>Petrol</option>
+                            <option>Diesel</option>
+                            <option>Electric</option>
+                            <option>Hybrid</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+     </div>
+
+    </div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '@TempData["SuccessMessage"]',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    }
+
+    @Html.Partial("Footer")
+
+   

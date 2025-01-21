@@ -1,0 +1,270 @@
+﻿@Html.Partial("Layout")
+@Html.Partial("_Header")
+@{
+    Layout = null;
+}
+@model IEnumerable<DriveX_Showcase_Admin.Models.Dealer_Account>
+@{
+    var hondacars = ViewBag.Honda_Data as List<DriveX_Showcase_Admin.Models.Honda>;
+    var bmwcars = ViewBag.BMW_Data as List<DriveX_Showcase_Admin.Models.BMW>;
+    var toyotacars = ViewBag.Toyota_Data as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var suzukicars = ViewBag.Suzuki_Data as List<DriveX_Showcase_Admin.Models.Suzuki>;
+    var Booking = ViewBag.Booking as List<DriveX_Showcase_Admin.Models.Booking_Form>;
+    var brand = ViewBag.brand as List<DriveX_Showcase_Admin.Models.Brand>;
+
+    // Find the dealer with the highest number of bookings
+    var dealerBookingCounts = new Dictionary<string, int>();
+    foreach (var booking in Booking)
+    {
+        if (dealerBookingCounts.ContainsKey(booking.dealer_name))
+        {
+            dealerBookingCounts[booking.dealer_name]++;
+        }
+        else
+        {
+            dealerBookingCounts[booking.dealer_name] = 1;
+        }
+    }
+
+    // Get the dealer with the highest bookings
+    var topDealer = dealerBookingCounts.OrderByDescending(d => d.Value).FirstOrDefault();
+    var topDealerName = topDealer.Key;
+}
+<main class="main">
+    <section class="text-center" id="software-header">
+        <div class="container" style="margin-top:-120px">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-8">
+                    <!-- Welcome Text with Typing Effect -->
+                    <h1 class="overflow-hidden mt-4">
+                        SPOT THE <br class="d-sm-none" />
+                        <span id="typed-text" class="fst-italic font-base fw-light"></span>
+                    </h1>
+                    <a class="btn btn-outline-dark rounded-pill mt-2 my-4" asp-controller="User" asp-action="AllVehicle">Book now</a>
+                    <!-- Video Section -->
+                    <div class="player-wrapper" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}' data-zanim-trigger="scroll">
+                        <video class="player" width="100%" height="auto" autoplay muted loop>
+                            <source src="~/BG.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of .container-->
+    </section>
+
+    <!-- Typing Effect Script -->
+    <script>
+        // Typing effect
+        const typedTextElement = document.getElementById('typed-text');
+        const textArray = ['Luxury Cars.', 'Certified Owned Cars.', 'Car Warranty.'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let currentText = '';
+        let isDeleting = false;
+
+        function type() {
+        if (isDeleting) {
+        currentText = textArray[textIndex].substring(0, charIndex - 1);
+        charIndex--;
+        } else {
+        currentText = textArray[textIndex].substring(0, charIndex + 1);
+        charIndex++;
+        }
+
+        typedTextElement.textContent = currentText;
+
+        if (!isDeleting && charIndex === textArray[textIndex].length) {
+        setTimeout(() => { isDeleting = true; }, 1000);
+        } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % textArray.length;
+        }
+
+        setTimeout(type, isDeleting ? 100 : 150);
+        }
+
+        window.onload = function () {
+        type();
+        };
+    </script>
+    </section>
+    <section style="margin-top:-180px">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="display-5 fw-light text-uppercase">
+                    Looking For A Dealer?
+                </h2>
+            </div>
+            <section style="margin-left:100px; margin-right:100px;">
+                <div class="container">
+                    <div class="row" style="margin-top:-100px">
+                        <div class="col-lg-12">
+                            <p>
+                                Car Spot helps you locate authorized dealers for 5 brands across Karachi. We have listed dealer showrooms located in Karachi. Choose the brand of your choice and get contact information and the full address of dealers near you.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Search Bar -->
+                        <div class="col-12 mb-4">
+                            <input type="text"
+                                   id="myInput"
+                                   class="form-control form-control-lg"
+                                   placeholder="Search by Address or Dealer Name"
+                                   onkeyup="filterDealers()" />
+                        </div>
+
+                        <!-- Dealers -->
+                        <div id="dealerCards" class="row g-4">
+                            @foreach (var item in Model)
+                            {
+                                var isHighlighted = item.dealers == topDealerName; 
+                                <div class="col-md-6 col-lg-4 dealer-card @(isHighlighted ? "highlighted-dealer" : "")">
+                                    <div class="card shadow-sm border-0">
+                                        <div class="card-body text-center">
+                                            <img src="~/profile.jpg" class="mb-3" height="100px" style="border-radius: 50%;" />
+                                            <h5 class="card-title fw-bold">@item.dealers</h5>
+                                            <p class="card-text"><strong>Address:</strong> @item.address</p>
+                                            <p class="card-text"><strong>Dealer Code:</strong> @item.dealer_IdCode</p>
+                                            <p class="card-text"><strong>Joined CarSpot:</strong> @item.registration_date</p>
+                                            <a asp-controller="User"
+                                               asp-action="DiscoverDealer"
+                                               asp-route-id="@item.id"
+                                               class="btn btn-outline-dark mt-4 btn-sm border-2 w-100">
+                                                Find Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div id="noDealersMessage" class="text-center mt-4" style="display: none;">
+                        <p>No dealers found matching your search criteria.</p>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                function filterDealers() {
+                    const input = document.getElementById("myInput").value.toUpperCase();
+                    const cards = document.querySelectorAll('.dealer-card');
+                    const noDealersMessage = document.getElementById("noDealersMessage");
+
+                    let found = false;
+
+                    cards.forEach(card => {
+                        const cardText = card.textContent || card.innerText;
+                        if (cardText.toUpperCase().includes(input)) {
+                            card.style.display = "block";
+                            found = true;
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+
+                    // Show the "no dealers found" message if no card is displayed
+                    noDealersMessage.style.display = found ? "none" : "block";
+                }
+            </script>
+</main>
+
+
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")
+<style>
+    /* Card Styles */
+    .card {
+        background-color: whitesmoke;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            max-width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+        }
+
+    .card-title {
+        color: #000;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        position: relative;
+    }
+
+    .card-text {
+        color: #555;
+        font-size: 0.95rem;
+    }
+
+        .card-text strong {
+            color: #333;
+        }
+
+    .btn {
+        font-size: 0.9rem;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+        .btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+    /* Search Input Styles */
+    #myInput {
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #333;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+        #myInput::placeholder {
+            color: #555;
+        }
+
+    /* No Dealers Found Message */
+    #noDealersMessage {
+        color: #ff6b6b;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    /* Highlighted Dealer Styles */
+    .highlighted-dealer {
+        box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+        /* Golden shadow */
+        position: relative;
+    }
+
+        /* "TOP DEALER" label */
+        .highlighted-dealer .card-title::after {
+            content: 'TOP DEALER';
+            position: absolute;
+            top: -130px;
+            padding:2px;
+            left: 10%;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius:5px;
+            background-color:red;
+            color: white; /* Gold color */
+            z-index: 2;
+        }
+</style>

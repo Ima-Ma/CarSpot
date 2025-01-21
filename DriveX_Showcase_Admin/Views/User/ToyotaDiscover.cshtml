@@ -1,0 +1,777 @@
+﻿@model DriveX_Showcase_Admin.Models.Toyata
+@{
+    Layout = null;
+}
+@{
+    var toyotacars = ViewBag.Toyota_Data as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var allComments = ViewBag.comments as List<DriveX_Showcase_Admin.Models.Comments>;
+    var filteredComments = allComments.Where(c => c.CarName == Model.Id).ToList();
+     var dealss = ViewBag.deals as List<DriveX_Showcase_Admin.Models.All_Deals>;
+}
+@Html.Partial("Layout")
+@Html.Partial("_Header")
+<main class="main min-vh-100" id="top">
+    <section class="overflow-hidden bg-custom" id="landing-features-1">
+        <div class="container" style="margin-top:-100px;">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <div class="row bg-custom-box rounded ">
+                        <div class="col-md-12" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+                            <div class="overflow-hidden">
+                                <h2 class="car-title mb-3">@Model.CarName</h2>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="car-description mb-4">@Model.CarDescription</p>
+                            </div>
+                            <div class="overflow-hidden">
+                                @if (Model.Status == "Deal")
+                                {
+                                        
+                                        @foreach (var d in dealss.Where(x => x.CarName == Model.CarName))
+                                        {
+                                        <span class="text-muted ">
+                                            <i class="fas fa-tag"></i>
+                                            <del>@String.Format("{0:N0}", Model.CarPrice) PKR</del>
+                                        </span>
+                                            <b>After @d.Discount_Percent% Discount</b>
+                                            <h5 class="fw-bold text-uppercase  car-price mb-3 ">
+                                            Discounted Price: <h2 class="text-success">@String.Format("{0:N0}", Model.CarPrice - (Model.CarPrice * d.Discount_Percent / 100)) PKR</h2>
+                                            </h5>
+                                        }
+                                }
+                                @if (Model.Status == "No Deal")
+                                {
+                                        <h5 class="fw-bold text-uppercase  car-price mb-3">
+                                            <i class="fas fa-tag"></i>
+                                            Official Price:<h2 class="text-success">@String.Format("{0:N0}", Model.CarPrice) PKR</h2 
+                                        </h5>
+                                }
+                            </div>
+                            <div class="car-specs bg-light p-4 rounded shadow">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Power</strong>
+                                        <span>@Model.Power <i class="fa-solid fa-power-off text-primary ms-2"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Mileage</strong>
+                                        <span>@Model.Mileage <i class="fa-solid fa-car text-success ms-2"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Engine Capacity</strong>
+                                        <span>@Model.EngineCapacity <i class="fa-solid fa-warehouse text-warning ms-2"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Fuel Type</strong>
+                                        <span>@Model.FuelType <i class="fa-solid fa-gas-pump text-danger ms-2"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong>Variant</strong>
+                                        <span>@Model.Variant <i class="fa-regular fa-square-check text-info ms-2"></i></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 position-relative">
+                    <img class="shadow-lg rounded img-fluid car-image" src="~/car_images/@Model.Image1" alt="Car Image" />
+                    <a href="~/uploaded_pdf/@Model.PDF" class="btn btn-dark mt-4 w-100" download>Download PDF <i class="fa-solid fa-download"></i></a>
+
+                    <button class="btn btn-outline-dark btn-lg mt-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
+                    <table class="ratings-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Comfort</th>
+                                <th class="text-center">Exterior</th>
+                                <th class="text-center">Fuel Economy</th>
+                                <th class="text-center">Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">@Model.RatingComfort</td>
+                                <td class="text-center">@Model.RatingExterior</td>
+                                <td class="text-center">@Model.RatingFuelEconomy</td>
+                                <td class="text-center">@Model.RatingPerformance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="car-details" id="car-details" style="margin-top:-200px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p id="carDetails" class="text-truncate">
+                        The <strong>@Model.CarName</strong> is an exceptional car designed to offer both style and performance at an unbeatable price of <strong>@Model.CarPrice</strong>.
+                        With its advanced features and innovative design, this car is built to exceed expectations.
+                        Powered by a <strong>@Model.EngineCapacity</strong> L engine, it offers impressive power with a total of <strong>@Model.Power</strong> horsepower.
+                        Its <strong>@Model.FuelType</strong> fuel system ensures excellent efficiency, making it ideal for long drives and city commutes.
+                        Available in a range of stunning <strong>@Model.Colors</strong>, the <strong>@Model.CarName</strong> combines versatility and elegance in one remarkable package.
+                        Whether you're looking for a car with superior performance, a comfortable driving experience, or a solid fuel economy rating, this model stands out.
+                        It boasts a mileage of <strong>@Model.Mileage</strong> km/l, making it both cost-effective and eco-friendly.
+                        The <strong>@Model.CarName</strong> also offers an outstanding comfort level with its excellent <strong>@Model.RatingComfort</strong> rating, a performance rating of <strong>@Model.RatingPerformance</strong>, and an exterior rating of <strong>@Model.RatingExterior</strong>, which ensures you’ll enjoy every drive.
+                        With a <strong>@Model.RatingFuelEconomy</strong> fuel economy rating, it’s a great option for those who prioritize sustainability without compromising on quality.
+                        To learn more about the vehicle, including its detailed specifications, download the PDF document using the link below.
+                        For more information about this car's availability, please check with the dealer using the dealer ID <strong>@Model.Dealer_id</strong>.
+                    </p>
+                    <a id="readMoreBtn" class="text-dark">Read More</a>
+                </div>
+                <div class="col-lg-6 comp">
+                    <a class="btn comparison-btn" href="#comparison">
+                        Comparison  <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+    <section id="defaultGallery">
+        <div class="container" style="background-color:rgba(0,0,0,0.03);">
+            <!-- Section Header -->
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">What People Say About This Car</h1>
+                </div>
+            </div>
+
+            <!-- Add Comment Form -->
+            <div class="row justify-content-center mb-5">
+                <form method="post" action="/ToyotaDiscover/AddCommentToyota" class="col-lg-8">
+                    <div class="input-group mb-4">
+
+
+                        <input type="hidden" name="Carname" value="@Model.Id" />
+                        <input class="form-control " type="text" name="UserName" placeholder="Your Name" required />
+
+
+                        <input class="form-control w-auto" type="text" name="Comment" placeholder="Add a comment..." required />
+
+                        <button class="btn btn-dark" type="submit">Post Comment</button>
+
+                    </div>
+                </form>
+            </div>
+
+            <!-- Display Comments -->
+            <div class="comments-section">
+                @if (filteredComments != null && filteredComments.Any())
+                {
+                    @foreach (var item in filteredComments)
+                    {
+                        <div class="comment">
+                            <div class="avatar">
+                                <img src="~/profile.jpg" alt="Avatar" class="rounded-circle" />
+                            </div>
+                            <div class="comment-content">
+                                <h6>@item.UserName</h6>
+                                <p>@item.Comment</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-muted text-center">No comments available yet. Be the first to share your thoughts!</p>
+                }
+            </div>
+        </div>
+    </section>
+
+
+    <section class="text-center" id="defaultGallery">
+        <div class="container">
+            <div class="row gy-4" id="User-gallery">
+                <div class="col-12 ">
+                    <h2 class="fs-6 fs-sm-5"><span class="text-uppercase fw-light">Discover Other BMW Cars</span></h2>
+                </div>
+                @foreach (var item in toyotacars.Where(x=> x.Status == "Deal"))
+                {
+                    <div class="col-6 col-lg-4">
+                        <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id" data-caption="your caption">
+                            <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                            <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                        </a>
+                        <div class="overflow-hidden">
+                            <h5 class="fs-9 fw-bold mt-3 mb-1" data-zanim-xs='{"from":{"y":45},"delay":0.2}'>@item.CarName</h5>
+                        </div>
+                    </div>
+                }
+                 @foreach (var item in toyotacars.Where(x=> x.Status == "No Deal"))
+                {
+                    <div class="col-6 col-lg-4">
+                        <a asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id" data-caption="your caption">
+                            <img class="rounded img-fluid" src="~/car_images/@item.Image1" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' data-zanim-trigger="scroll" />
+                        </a>
+                        <div class="overflow-hidden">
+                            <h5 class="fs-9 fw-bold mt-3 mb-1" data-zanim-xs='{"from":{"y":45},"delay":0.2}'>@item.CarName</h5>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="car-comparison-section" id="comparison">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 car-details-left">
+                    <!-- Left side: Fixed car data -->
+                    <h1 class="text-dark car-title">@Model.CarName</h1>
+                    <img src="~/car_images/@Model.Image1" id="currentCarImage" class="img-fluid car-image" alt="Selected Car" />
+                    <div class="car-info">
+                        <h5 id="currentCarPrice" class="car-detail">Price: @Model.CarPrice</h5>
+                        <h5 id="currentCarMileage" class="car-detail">Mileage: @Model.Mileage</h5>
+                        <h5 id="currentCarEngine" class="car-detail">Engine Capacity: @Model.EngineCapacity</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6 car-selection-right">
+                    <!-- Right side: Car selection and dynamic details -->
+                    <h6 class="text-dark selection-title">Choose other Toyota Car for Comparison</h6>
+                    <select class="form-select alert-dark" id="carNameFilter" aria-label="Select Car Name">
+                        <option value="">Select a car</option>
+                        @foreach (var item in toyotacars)
+                        {
+                            <option value="@item.CarName"
+                                    id="@item.Id"
+                                    data-price="@item.CarPrice"
+                                    data-mileage="@item.Mileage"
+                                    data-engine="@item.EngineCapacity"
+                                    data-image="@item.Image1">
+                                @item.CarName
+                            </option>
+                        }
+                    </select>
+                    <div id="carDetails" class="mt-3 comparison-details">
+                        <img id="Image1" src="~/car_images/" alt="Car Image" class="img-fluid comparison-image" />
+                        <h5 id="carPrice" class="comparison-detail">Price:</h5>
+                        <h5 id="carMileage" class="comparison-detail">Mileage:</h5>
+                        <h5 id="carEngine" class="comparison-detail">Engine Capacity:</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* General Styling */
+        .car-comparison-section {
+            font-family: Arial, sans-serif;
+            color: #000;
+        }
+
+        .car-title, .selection-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .car-detail, .comparison-detail {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        /* Left Section */
+        .car-details-left {
+            text-align: center;
+            border-right: 2px solid #000;
+            padding-right: 20px;
+        }
+
+        .car-image {
+            width: 100%;
+            height: auto;
+            margin: 15px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .car-image:hover {
+                transform: scale(1.05);
+            }
+
+        .car-info {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        /* Right Section */
+        .car-selection-right {
+            padding-left: 20px;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .form-select:hover {
+                background-color: #e9ecef;
+            }
+
+        .comparison-details {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .comparison-image {
+            width: 80%;
+            height: auto;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .comparison-image:hover {
+                transform: scale(1.05);
+            }
+
+        .comparison-detail {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+    </style>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 80%; height: 80%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title text-uppercase fw-light" style="color:black;" id="exampleModalLabel">Booking Form For @Model.CarName</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="overflow-y: auto; height: 75%;">
+                    <section class="py-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row h-100 align-items-center justify-content-center">
+                                        <div class="col-sm-8 col-md-6 col-lg-8 col-xl-6">
+                                            <form method="post" action="/ToyotaDiscover/AddBookingToyota">
+                                                <div class="row">
+                                                    <div class="col-12 mb-3">
+                                                        <input class="form-control" type="text" required name="car_name" readonly value="@Model.CarName" />
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <input class="form-control" type="text" required name="dealer_name" readonly value="@Model.Dealer_id" />
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <input class="form-control" type="text" required name="full_name" placeholder="Full Name" />
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <input class="form-control" type="email" required name="user_email" placeholder="User Email" />
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <input class="form-control" type="text" required name="phone_number" placeholder="Phone Number" />
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <textarea class="form-control" name="message" required placeholder="Message"></textarea>
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <button class="btn btn-dark w-100" type="submit">Book Now</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    .ratings-table th {
+        text-align: center;
+        font-size: 1rem;
+        color: #444;
+    }
+
+    /* Modal Styling */
+    .modal-content {
+        padding: 20px;
+        background-color: #fff;
+    }
+
+
+
+    .modal-body {
+        padding: 20px;
+    }
+
+
+
+    .ratings-table {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        font-size: 1rem;
+    }
+
+        .ratings-table th, .ratings-table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .ratings-table th {
+            background-color: black;
+            color: white;
+        }
+
+        .ratings-table td {
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+
+    /* Styling for the container */
+    .comp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    /* Styling for the link (button-like) */
+    .comparison-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        background-color: black; /* Black background for the button */
+        color: #fff; /* White text color */
+        border: 2px solid #fff; /* White border */
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        /* Hover effect */
+        .comparison-btn:hover {
+            background-color: #333; /* Darker black on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Focus effect for accessibility */
+        .comparison-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* White focus outline */
+        }
+
+
+    .car-specs {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+        .car-specs .list-group-item {
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+        }
+
+            .car-specs .list-group-item strong {
+                font-weight: 600;
+                color: #343a40;
+            }
+
+            .car-specs .list-group-item span {
+                display: flex;
+                align-items: center;
+            }
+
+            .car-specs .list-group-item i {
+                margin-left: 8px;
+                font-size: 1.2rem;
+            }
+
+            .car-specs .list-group-item:hover {
+                background-color: #e9ecef;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+    #defaultGallery {
+        background-color: #f9f9f9;
+        padding: 60px 0;
+        border-top: 5px solid #333;
+    }
+
+        #defaultGallery h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        #defaultGallery .form-control {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            padding: 15px;
+            margin-right: 10px;
+        }
+
+        #defaultGallery .btn-dark {
+            background-color: #333;
+            border: none;
+            font-size: 1rem;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+            #defaultGallery .btn-dark:hover {
+                background-color: #555;
+            }
+
+        #defaultGallery .card {
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            #defaultGallery .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            }
+
+        #defaultGallery .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        #defaultGallery .card-text {
+            font-size: 1rem;
+            color: #666;
+        }
+
+    .comments-section {
+        border-top: 1px solid #ddd;
+        padding-top: 40px;
+        margin-top: 40px;
+    }
+
+    .comment {
+        display: flex;
+        align-items: flex-start;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+    }
+
+        .comment .avatar {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+            .comment .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+    .comment-content {
+        flex-grow: 1;
+        padding-left: 15px;
+    }
+
+        .comment-content h6 {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .comment-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+    .text-muted {
+        color: #888;
+    }
+
+    input.form-control {
+        border-radius: 25px;
+    }
+
+    button.btn {
+        border-radius: 25px;
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: #aaa;
+    }
+
+    #defaultGallery {
+        background-color: #f9f9f9;
+        padding: 30px 0;
+    }
+
+    .comments-section {
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+    }
+
+    .comment {
+        display: flex;
+        align-items: flex-start;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+        .comment .avatar {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+        }
+
+            .comment .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+    .comment-content {
+        flex-grow: 1;
+    }
+
+        .comment-content h6 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .comment-content p {
+            font-size: 14px;
+            color: #555;
+        }
+
+    input.form-control {
+        border-radius: 25px;
+    }
+
+    button.btn {
+        border-radius: 25px;
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: #aaa;
+    }
+
+    .text-truncate {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit to 3 lines */
+        -webkit-box-orient: vertical;
+    }
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carDetails = document.getElementById("carDetails");
+        const readMoreBtn = document.getElementById("readMoreBtn");
+
+        // Limit to three lines with a CSS class
+        carDetails.classList.add("text-truncate");
+
+        readMoreBtn.addEventListener("click", function () {
+            if (carDetails.classList.contains("text-truncate")) {
+                carDetails.classList.remove("text-truncate");
+                readMoreBtn.textContent = "Read Less";
+            } else {
+                carDetails.classList.add("text-truncate");
+                readMoreBtn.textContent = "Read More";
+            }
+        });
+    });
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carNameFilter = document.getElementById("carNameFilter");
+        const carImage = document.getElementById("carImage");
+        const carPrice = document.getElementById("carPrice");
+        const carMileage = document.getElementById("carMileage");
+        const carEngine = document.getElementById("carEngine");
+
+        carNameFilter.addEventListener("change", function () {
+            const selectedOption = carNameFilter.options[carNameFilter.selectedIndex];
+
+            if (selectedOption.value) {
+                const image = selectedOption.getAttribute("data-image");
+                const price = selectedOption.getAttribute("data-price");
+                const mileage = selectedOption.getAttribute("data-mileage");
+                const engine = selectedOption.getAttribute("data-engine");
+
+                carImage.src = `~/car_images/${image}`;
+                carPrice.textContent = `Price: ${price}`;
+                carMileage.textContent = `Mileage: ${mileage}`;
+                carEngine.textContent = `Engine Capacity: ${engine}`;
+            } else {
+                carImage.src = "";
+                carPrice.textContent = "";
+                carMileage.textContent = "";
+                carEngine.textContent = "";
+            }
+        });
+    });
+
+</script>
+<script>
+    $('#carNameFilter').on('change', function () {
+        const selectedOption = $(this).find(':selected');
+        const selectedId = selectedOption.attr('id');
+
+        if (selectedId) {
+            const carPrice = selectedOption.data('price');
+            const carMileage = selectedOption.data('mileage');
+            const carEngine = selectedOption.data('engine');
+            const carImage = selectedOption.data('image');
+
+            $('#carPrice').text(carPrice);
+            $('#carMileage').text(carMileage);
+            $('#carEngine').text(carEngine);
+            $('#Image1').attr('src', '/car_images/' + carImage);
+        }
+    });
+
+</script>
+
+        
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")

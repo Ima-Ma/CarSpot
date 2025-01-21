@@ -1,0 +1,255 @@
+﻿@Html.Partial("Header")
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-12 grid-margin">
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Add Vehicle Details</h4>
+                    <form class="form-sample" id="multiStepForm" method="post" enctype="multipart/form-data">
+                        <!-- Step 1: Basic Information -->
+                        <div class="form-step active">
+                            <p class="card-description">Basic Information</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Car Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" required name="CarName" placeholder="Enter car name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Car Price</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" required name="CarPrice" placeholder="Enter car price" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" required name="CarDescription" rows="4" placeholder="Enter car description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary next-step">Next</button>
+                        </div>
+
+                        <!-- Step 2: Specifications -->
+                        <div class="form-step">
+                            <p class="card-description">Specifications</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Fuel Type</label>
+                                        <div class="col-sm-9">
+                                            <select required class="form-control" name="FuelType">
+                                                <option>Petrol</option>
+                                                <option>Diesel</option>
+                                                <option>Electric</option>
+                                                <option>Hybrid</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Variant</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="Variant" placeholder="Enter variant" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Mileage (ARAI)</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="Mileage" placeholder="Enter mileage" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Colors</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="Colors" placeholder="Enter available colors" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Power</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="Power" placeholder="Enter power" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Engine Capacity</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="EngineCapacity" placeholder="Enter engine capacity" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary prev-step">Previous</button>
+                            <button type="button" class="btn btn-primary next-step">Next</button>
+                        </div>
+
+                        <!-- Step 3: Images and Ratings -->
+                        <div class="form-step">
+                            <p class="card-description">Images</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Image 1</label>
+                                        <div class="col-sm-9">
+                                            <input required type="file" class="form-control" name="image1" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">
+                                            Dealer Name
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="Dealer_id" value="@Context.Session.GetString("Brand")" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Ratings</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Exterior</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="RatingExterior" placeholder="Enter rating" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Comfort</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="RatingComfort" placeholder="Enter rating" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Performance</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="RatingPerformance" placeholder="Enter rating" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Fuel Economy</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="RatingFuelEconomy" placeholder="Enter rating" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Upload PDF</label>
+                                        <div class="col-sm-9">
+                                            <input required type="file" class="form-control" name="pDF" placeholder="Enter rating" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Brand Name</label>
+                                        <div class="col-sm-9">
+                                            <select required class="form-control" name="BrandName">
+                                                <option value="BMW">BMW</option>
+                                                <option value="Honda">Honda</option>
+                                                <option value="Toyota">Toyota</option>
+                                                <option value="Mercedes_Benz">Mercedes_Benz</option>
+                                                <option value="Suzuki">Suzuki</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary prev-step">Previous</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '@TempData["SuccessMessage"]',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    }
+
+    @Html.Partial("Footer")
+
+    <script>
+        const formSteps = document.querySelectorAll(".form-step");
+        const nextBtns = document.querySelectorAll(".next-step");
+        const prevBtns = document.querySelectorAll(".prev-step");
+
+        let currentStep = 0;
+
+        function showStep(step) {
+            formSteps.forEach((formStep, index) => {
+                formStep.classList.toggle("active", index === step);
+            });
+        }
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                currentStep++;
+                showStep(currentStep);
+            });
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                currentStep--;
+                showStep(currentStep);
+            });
+        });
+
+        // Initialize
+        showStep(currentStep);
+    </script>
+
+    <style>
+        .form-step {
+            display: none;
+        }
+
+            .form-step.active {
+                display: block;
+            }
+    </style>

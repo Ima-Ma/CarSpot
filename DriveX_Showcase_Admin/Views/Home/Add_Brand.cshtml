@@ -1,0 +1,78 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Brand>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <!-- Add Brand Form -->
+        
+
+            <!-- Display Brands in Table -->
+            <div class="col-lg-10 mx-auto mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Brand List</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Brand Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                        
+                                            <td>
+                                            <img src="~/logos/@item.Brand_Logo" alt="Brand Logo" height="80">
+                                                
+                                                @item.brand_name</td>
+                                            <td>
+
+                                                <a asp-controller="Home" asp-action="Delete_brand" asp-route-id="@item.id" class="btn btn-outline-primary btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '@TempData["SuccessMessage"]',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    }
+
+    @Html.Partial("Footer")
+</div>
+
+<style>
+
+
+    .table-bordered td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .img-fluid {
+       
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-bordered th {
+        color: white;
+        background-color: #6610f2;
+    }
+</style>

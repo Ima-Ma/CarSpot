@@ -1,0 +1,305 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DriveX_Showcase_Admin
+build_property.RootNamespace = DriveX_Showcase_Admin
+build_property.ProjectDir = C:\Users\asp\Downloads\DriveX_Showcase_Admin\DriveX_Showcase_Admin\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\asp\Downloads\DriveX_Showcase_Admin\DriveX_Showcase_Admin
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/active_account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhY3RpdmVfYWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/active_dealer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhY3RpdmVfZGVhbGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Add_Brand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRfQnJhbmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/add_new_package.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhZGRfbmV3X3BhY2thZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/AdminLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkxvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/all_dealers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhbGxfZGVhbGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/all_deals.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhbGxfZGVhbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/announcement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhbm5vdW5jZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/automobiles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhdXRvbW9iaWxlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/BMW.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCTVcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/BMWReadmore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCTVdSZWFkbW9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxib29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/booking_show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxib29raW5nX3Nob3cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Choose_Brand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaG9vc2VfQnJhbmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/dealercar_Readmore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxkZWFsZXJjYXJfUmVhZG1vcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/dealercar_show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxkZWFsZXJjYXJfc2hvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Dealers_Car_Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZWFsZXJzX0Nhcl9TaG93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/dealer_history.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxkZWFsZXJfaGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/edit_delete_automobiles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxlZGl0X2RlbGV0ZV9hdXRvbW9iaWxlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Honda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb25kYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/HondaReadmore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb25kYVJlYWRtb3JlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/launch_deals.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxsYXVuY2hfZGVhbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Mercedes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZXJjZWRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/myprofile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxteXByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/new_dealer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxuZXdfZGVhbGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Option.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/readmore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxyZWFkbW9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Send_Mail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZW5kX01haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/subscriber.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzdWJzY3JpYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/subs_pkg_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzdWJzX3BrZ19kZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Suzuki.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdXp1a2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/SuzukiReadmore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdXp1a2lSZWFkbW9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/Toyota.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUb3lvdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/ToyotaReadmore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUb3lvdGFSZWFkbW9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/User_Messages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyX01lc3NhZ2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/user_reply.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx1c2VyX3JlcGx5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/viewdeales.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx2aWV3ZGVhbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Home/View_Announcement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3X0Fubm91bmNlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEZvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/Layoutscript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dHNjcmlwdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/AllVehicles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBbGxWZWhpY2xlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/BMWCars.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxCTVdDYXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/BMWDiscover.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxCTVdEaXNjb3Zlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/Comparision.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb21wYXJpc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/DealsPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWFsc1BhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/DiscoverDealer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEaXNjb3ZlckRlYWxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/Discover_Brand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEaXNjb3Zlcl9CcmFuZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/ErrorPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFcnJvclBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/FindDealers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGaW5kRGVhbGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/HondaCars.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxIb25kYUNhcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/HondaDiscover.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxIb25kYURpc2NvdmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/OurBrands.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxPdXJCcmFuZHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTZXJ2aWNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/SuzukiCars.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTdXp1a2lDYXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/SuzukiDiscover.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTdXp1a2lEaXNjb3Zlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/ToyotaCars.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxUb3lvdGFDYXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/User/ToyotaDiscover.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxUb3lvdGFEaXNjb3Zlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-qyadfp0rr4
+
+[C:/Users/asp/Downloads/DriveX_Showcase_Admin/DriveX_Showcase_Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-1qbm9xzlnt

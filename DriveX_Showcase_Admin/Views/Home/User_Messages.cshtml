@@ -1,0 +1,59 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Contact>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th>Reply</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carTableBody">
+                                @foreach (var items in Model)
+                                {
+                                    <tr>
+                                        <td>@items.Id</td>
+                                        <td>@items.Name</td>
+                                        <td>@items.Email</td>
+                                        <td>@items.Message</td>
+                                        <td>
+                                            <a class="btn btn-outline-dark" asp-controller="Home" asp-action="user_reply" asp-route-id="@items.Id">Reply Now</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    @Html.Partial("Footer")
+    <style>
+    .table-bordered th {
+        color: white;
+        background-color: #6610f2;
+    }
+    </style>
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '@TempData["SuccessMessage"]',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}

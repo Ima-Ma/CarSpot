@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\DriveX_Showcase_Admin.props" />
+</Project>

@@ -1,0 +1,41 @@
+﻿@Html.Partial("Header")
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Vehicles</h4>
+                    <p class="card-description">
+                        Edit & Delete Automobiles !
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>VehicleIdCode</th>
+                                    <th>VehicleName</th>
+                                    <th>VehicleImage</th>
+                                    <th>ReadMore</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>Photoshop</td>
+                                    <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
+                                    <td><a asp-controller="Home" asp-action="ReadMore" asp-route-id="" class="btn btn-warning">More</a></td>
+                                    <td><a asp-controller="Home" asp-action="DeleteVehicle" asp-route-id="" class="btn btn-danger">Delete</a></td>
+                                    <td><a asp-controller="Home" asp-action="EditVehicle" asp-route-id="" class="btn btn-primary">Edit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Html.Partial("Footer")

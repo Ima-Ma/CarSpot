@@ -1,0 +1,180 @@
+﻿@Html.Partial("Header")
+@model IEnumerable<DriveX_Showcase_Admin.Models.Dealer_Account>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Dealers Details</h4>
+                    <p class="card-description">
+                        Details Active / Deactive
+                    </p>
+
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input type="text" id="searchField" placeholder="Search Dealers..." class="search-input" onkeyup="searchDealers()">
+                    </div>
+
+                    <div id="noResultsMessage" class="no-results-message" style="display: none;">
+                        No dealers found matching your search.
+                    </div>
+
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Dealer IdCode</th>
+                                    <th>Dealer Name</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dealerTableBody">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.dealer_IdCode</td>
+                                        <td>@item.dealers</td>
+                                        <td>@item.address</td>
+                                        <td>@item.email</td>
+                                        <td>@item.status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <!-- Pagination Controls -->
+                        <div class="pagination-controls">
+                            <button class="btn btn-primary" onclick="previousPage()">Previous</button>
+                            <button class="btn btn-primary" onclick="nextPage()">Next</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("Footer")
+</div>
+
+<script>
+    const rowsPerPage = 4; // Number of rows to display per page
+    let currentPage = 1;
+
+    // Update Table based on currentPage and search
+    function updateTable() {
+        const tableRows = document.querySelectorAll('#dealerTableBody tr');
+        const totalRows = tableRows.length;
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+
+        // Show only the rows for the current page
+        tableRows.forEach((row, index) => {
+            if (index >= start && index < end) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+
+        // Disable/enable the pagination buttons
+        document.querySelector('.pagination-controls button:nth-child(1)').disabled = currentPage === 1;
+        document.querySelector('.pagination-controls button:nth-child(2)').disabled = end >= totalRows;
+    }
+
+    // Handle Next Page
+    function nextPage() {
+        const tableRows = document.querySelectorAll('#dealerTableBody tr');
+        if (currentPage * rowsPerPage < tableRows.length) {
+            currentPage++;
+            updateTable();
+        }
+    }
+
+    // Handle Previous Page
+    function previousPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            updateTable();
+        }
+    }
+
+    // Search Functionality
+    function searchDealers() {
+        const searchValue = document.getElementById('searchField').value.trim().toLowerCase();
+        const tableRows = document.querySelectorAll('#dealerTableBody tr');
+        let matchFound = false;
+
+        // Loop through each row and check if any cell matches the search value
+        tableRows.forEach(row => {
+            const dealerName = row.cells[1].textContent.toLowerCase().trim();
+            const address = row.cells[2].textContent.toLowerCase().trim();
+            const email = row.cells[3].textContent.toLowerCase().trim();
+
+            // Check if any column contains the search value (partial match)
+            if (dealerName.includes(searchValue) || address.includes(searchValue) || email.includes(searchValue)) {
+                row.style.display = ''; // Show row
+                matchFound = true;
+            } else {
+                row.style.display = 'none'; // Hide row
+            }
+        });
+
+        // Show a message if no results are found
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        if (matchFound) {
+            noResultsMessage.style.display = 'none';
+            currentPage = 1; // Reset to the first page after search
+            updateTable();
+        } else {
+            noResultsMessage.style.display = 'block';
+        }
+    }
+
+    // Initialize the table display on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        updateTable();
+    });
+</script>
+
+<style>
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        width: 70%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .no-results-message {
+        color: #333;
+        font-size: 16px;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .pagination-controls {
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .table-striped th, .table-striped td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table-striped th {
+        background-color: #6610f2;
+        color: white;
+    }
+
+</style>

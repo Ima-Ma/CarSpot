@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DriveX_Showcase_Admin.props" />
+</Project>

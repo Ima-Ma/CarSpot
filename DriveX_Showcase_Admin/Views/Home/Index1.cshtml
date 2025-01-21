@@ -1,0 +1,142 @@
+﻿@Html.Partial("Header")
+@{
+    var data = ViewBag.data as IEnumerable<DriveX_Showcase_Admin.Models.Dealer_Account>;
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            @if (Context.Session.GetString("AdminEmail") != null)
+            {
+                <div class="col-md-12 grid-margin">
+                    <!-- Dashboard Header with Image and Text Overlay -->
+                    <div class="row mb-4">
+                        <div class="col-6 position-relative">
+                            <img src="https://wallpaperset.com/w/full/3/6/8/104824.jpg" alt="CarSpot Dashboard" class="img-fluid w-100 rounded shadow-sm" style="height: 400px; object-fit: cover;">
+                            <div class="position-absolute text-center text-white" style="top: 50%; left:50%; transform: translate(-50%, -50%);">
+                                <h2 class="font-weight-bold">
+                                    <i class="fas fa-user-shield text-white"></i>  Admin <br />
+                                    <span class="text-white">@Context.Session.GetString("AdminEmail")</span>
+                                </h2>
+                                <a asp-controller="User" asp-action="Index" class="btn btn-primary">Explore Website</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <a asp-controller="Home" asp-action="announcement" class="btn btn-primary my-3 w-100" style="text-decoration: none; color: white;">
+                                <p class="mb-4">
+                                    <i class="fa-solid fa-bullhorn fa-2x text-white"></i><br>
+                                    <strong>Announcements for Dealers</strong>
+                                </p>
+                                <h6 class="fw-bold" style="margin: 0; font-size: 18px;">
+                                    Updates
+                                    <i class="fa-solid fa-newspaper text-light" style="margin-left: 8px;"></i>
+                                </h6>
+                                <p class="text-white">Catch up on what’s new and next.</p>
+                            </a>
+                            <div class="card card-tale bg-primary text-white shadow-sm" style="border-radius: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                <div class="card-body text-center">
+                                    <p class="mb-4">
+                                        <i class="fa-solid fa-globe fa-2x text-light"></i><br>
+                                        <strong>Total Cars</strong>
+                                    </p>
+                                    <p class="fs-30 mb-2">@ViewBag.TotalCarCount</p>
+                                    <p>Cars available across all brands</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var brand in ViewBag.CarCounts)
+                        {
+                            <div class="col-md-3 mb-4 stretch-card transparent">
+                                <div class="card card-tale shadow-sm text-white" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <div class="card-body text-center">
+                                        <p class="mb-4">
+                                            <i class="fa-solid fa-car fa-2x text-white"></i><br>
+                                            <strong>@brand.Key Cars</strong>
+                                        </p>
+                                        <p class="fs-30 mb-2 text-white">@brand.Value</p>
+                                        <p>Cars available</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Context.Session.GetString("Brand") != null)
+            {
+                <div class="col-md-12 grid-margin">
+                    <!-- Dashboard Header with Image and Text Overlay -->
+                    <div class="row mb-4">
+                        <div class="col-6 position-relative">
+                            <img src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3BvcnRzJTIwY2FyfGVufDB8fDB8fHww" alt="CarSpot Dashboard" class="img-fluid w-100 rounded shadow-sm" style="height: 400px; object-fit: cover;">
+                            <div class="position-absolute text-center text-white" style="top: 50%; left:50%; transform: translate(-50%, -50%);">
+                                <h2 class="font-weight-bold">
+                                    <i class="fas fa-user-tie text-white"></i>  Dealer <br />
+                                    <span class="text-white">@Context.Session.GetString("Brand")</span>
+                                </h2>
+                                <a asp-controller="User" asp-action="Index" class="btn btn-primary">Explore Website</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                                <a class="btn btn-primary my-5 w-100 p-3 " asp-controller="Home" asp-action="View_Announcement"> <i class="fas fa-bullhorn text-white"></i> View Announcements</a>
+                            <div class="card card-tale bg-primary text-white shadow-sm" style="border-radius: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                <div class="card-body text-center">
+                                    <p class="mb-4">
+                                        <i class="fa-solid fa-globe fa-2x text-light"></i><br>
+                                        <strong>Total Cars</strong>
+                                    </p>
+                                    <p class="fs-30 mb-2">@ViewBag.TotalCarCount</p>
+                                    <p>Cars available across all brands</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var brand in ViewBag.CarCounts)
+                        {
+                            <div class="col-md-3 mb-4 stretch-card transparent">
+                                <div class="card card-tale shadow-sm text-white" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <div class="card-body text-center">
+                                        <p class="mb-4">
+                                            <i class="fa-solid fa-car fa-2x text-white"></i><br>
+                                            <strong>@brand.Key Cars</strong>
+                                        </p>
+                                        <p class="fs-30 mb-2 text-white">@brand.Value</p>
+                                        <p>Cars available</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <style>
+                    .card:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+                    }
+
+                    .fa-solid:hover {
+                        color: #f39c12;
+                        transform: scale(1.2);
+                        transition: color 0.3s ease, transform 0.3s ease;
+                    }
+
+                </style>
+
+            }
+        </div>
+    </div>
+</div>
+@Html.Partial("Footer")
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '@TempData["SuccessMessage"]',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}

@@ -1,0 +1,373 @@
+﻿@Html.Partial("Layout")
+@Html.Partial("_Header")
+@{
+    Layout = null;
+}
+@model IEnumerable<DriveX_Showcase_Admin.Models.Brand>
+@{
+    var hondacars = ViewBag.Honda_Data as List<DriveX_Showcase_Admin.Models.Honda>;
+    var bmwcars = ViewBag.BMW_Data as List<DriveX_Showcase_Admin.Models.BMW>;
+    var toyotacars = ViewBag.Toyota_Data as List<DriveX_Showcase_Admin.Models.Toyata>;
+    var suzukicars = ViewBag.Suzuki_Data as List<DriveX_Showcase_Admin.Models.Suzuki>;
+    var dealer_address = ViewBag.dealerdata as List<DriveX_Showcase_Admin.Models.Dealer_Account>;
+
+}
+<style>
+    .price-overlay {
+        position: absolute;
+        top: 10px; /* Adjust for spacing */
+        right: 10px;
+        background-color: red;
+        color: white;
+        font-size: 1rem; /* Adjust size */
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 10;
+    }
+
+
+    .swiper-button-prev, .swiper-button-next {
+        color: white;
+        font-weight: bold;
+        z-index: 10;
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next {
+        left: 90%;
+    }
+
+    .slider-container{
+        padding:20px;
+    }
+
+</style>
+<main class="main min-vh-100" id="top">
+<div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3">
+                    <a asp-controller ="User" asp-action="Discover_Brand" asp-route-name="@item.brand_name">
+                    <img class=" brand-logo" height="100px" src="~/logos/@item.Brand_Logo" alt="@item.brand_name" />
+                    </a>
+                </div>
+            }
+        </div>
+</div>
+<hr />
+    <div class="container overflow-hidden">
+        <h5 class="fw-light text-uppercase fs-6 fs-lg-5" data-zanim-lg='{"delay":0.4}'>Where Innovation Meets Elegance – Choose Your Perfect .<span class="fw-black"> Ride!</span></h5>
+    </div>
+    <section class="slider-container mt-4 ">
+        <div class="swiper card_slider">
+            <div class="swiper-wrapper">
+                @foreach (var item in bmwcars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="swiper-slide ">
+                        <div class="img_box position-relative">
+                            
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <!-- Price overlay -->
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="BMWDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                @foreach (var item in bmwcars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="swiper-slide ">
+                        <div class="img_box position-relative">
+                            <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <!-- Price overlay -->
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="BMWDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                @foreach (var item in toyotacars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="swiper-slide text-white">
+                        <div class="img_box position-relative">
+                            <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark ">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="ToyotaDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (var item in toyotacars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="swiper-slide text-white">
+                        <div class="img_box position-relative">
+                           
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark ">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="ToyotaDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (var item in suzukicars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="swiper-slide text-white">
+                        <div class="img_box position-relative">
+                            <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark ">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="SuzukiDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (var item in suzukicars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="swiper-slide text-white">
+                        <div class="img_box position-relative">
+                            
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark ">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="SuzukiDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (var item in hondacars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="swiper-slide text-white">
+                        <div class="img_box position-relative">
+                            <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark ">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="HondaDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                @foreach (var item in hondacars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="swiper-slide text-white">
+                        <div class="img_box position-relative">
+                            <img src="~/car_images/@item.Image1" alt="@item.CarName" class="img-fluid">
+                            <span class="price-overlay">@String.Format("{0:N0}", item.CarPrice) PKR</span>
+                            <div class="details">
+                                <h4 class="fw-light text-dark ">@item.CarName</h4>
+                                <a class="btn btn-dark mt-4 btn-sm border-2 w-100"
+                                   asp-controller="User" asp-action="HondaDiscover"
+                                   asp-route-id="@item.Id">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+    <div class="container">
+        
+        <!-- Filter Sidebar -->
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-transparent p-3 border rounded">
+                    <h5 class="text-dark">Filter <i class="fas fa-filter"></i></h5>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!-- Car Name Filter -->
+                            <div class="my-3">
+                                <h6 class="text-dark">Brand Name</h6>
+                                <select class="form-select" id="carNameFilter" aria-label="Select Brand Name">
+                                    <option value="">All</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.brand_name">@item.brand_name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <!-- Dealer Filter -->
+                            <div class="my-3">
+                                <h6 class="text-dark">Dealers Address</h6>
+                                <select class="form-select" id="dealerFilter" aria-label="Select Dealer Address">
+                                    <option value="">All</option>
+                                    @foreach (var item in dealer_address)
+                                    {
+                                        <option value="@item.dealers">@item.address</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Apply Filter Button -->
+                        <div class="col-lg-2">
+                            <button class="btn btn-dark w-100 my-3" id="applyFilter">Apply Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content: Car Listings -->
+        <div class="col-12">
+            <div class="row" id="car-list">
+                <!-- Loop through car data -->
+                @foreach (var item in bmwcars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="bmw" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+                @foreach (var item in bmwcars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="bmw" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="BMWDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+
+                @foreach (var item in hondacars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="honda" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="HondaDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+                @foreach (var item in hondacars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="honda" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="HondaDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+
+                @foreach (var item in toyotacars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="toyota" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="ToyotaDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+                @foreach (var item in toyotacars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="toyota" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="ToyotaDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+                @foreach (var item in suzukicars.Where(x => x.Status == "No Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="suzuki" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+                @foreach (var item in suzukicars.Where(x => x.Status == "Deal"))
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 car-item mb-3" data-carname="suzuki" data-pricerange="@item.CarPrice" data-dealer="@item.Dealer_id">
+                        <img src="~/car_images/offer.png" alt="Special Offer" style="width:80px;height:80px;position:absolute">
+                        <img src="~/car_images/@item.Image1" class="img-fluid" />
+                        <a class="btn btn-outline-dark w-100 mt-3" asp-controller="User" asp-action="SuzukiDiscover" asp-route-id="@item.Id">@item.CarName</a>
+                    </div>
+                }
+                <!-- Add similar loops for toyota and suzuki cars -->
+            </div>
+        </div>
+
+        <!-- No Vehicle Found Message -->
+        <div id="noVehicleMessage" class="alert alert-dark text-center my-4" style="display: none;">
+            No vehicles found matching your criteria.
+        </div>
+
+        <!-- JavaScript for Filtering -->
+        <script>
+            document.getElementById('applyFilter').addEventListener('click', function () {
+                const carNameFilter = document.getElementById('carNameFilter').value.toLowerCase();
+                const dealerFilter = document.getElementById('dealerFilter').value.toLowerCase();
+
+                const carItems = document.querySelectorAll('.car-item');
+                let hasVisibleCars = false;
+
+                carItems.forEach(function (car) {
+                    const carName = car.getAttribute('data-carname').toLowerCase();
+                    const dealer = car.getAttribute('data-dealer').toLowerCase();
+
+                    const isCarNameMatch = !carNameFilter || carName.includes(carNameFilter);
+                    const isDealerMatch = !dealerFilter || dealer.includes(dealerFilter);
+
+                    if (isCarNameMatch && isDealerMatch) {
+                        car.style.display = 'block';
+                        hasVisibleCars = true;
+                    } else {
+                        car.style.display = 'none';
+                    }
+                });
+
+                // Show or hide the "No Vehicle Found" message
+                const noVehicleMessage = document.getElementById('noVehicleMessage');
+                noVehicleMessage.style.display = hasVisibleCars ? 'none' : 'block';
+            });
+        </script>
+
+
+</main>
+
+@Html.Partial("_Footer")
+@Html.Partial("Layoutscript")
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.card_slider', {
+        slidesPerView: 2.9, 
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true, 
+    });
+</script>

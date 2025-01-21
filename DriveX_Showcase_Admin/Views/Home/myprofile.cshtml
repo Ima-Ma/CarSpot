@@ -1,0 +1,169 @@
+﻿@model Dealer_Account
+@{
+    var data2 = ViewBag.Data2 as DriveX_Showcase_Admin.Models.SubscriptionXPackages;
+}
+@Html.Partial("Header")
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="profile-card">
+                    <h2 class="profile-title"><i class="fas fa-user"></i> Dealer Profile</h2>
+                    <div class="profile-info">
+                        <p><i class="fas fa-id-card"></i> <strong>Dealer ID Code:</strong> @Model.dealer_IdCode</p>
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> @Model.email</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> @Model.address</p>
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Registration Date:</strong> @Model.registration_date.ToShortDateString()</p>
+                        @if (Model.selected_brand == 1)
+                        {
+                            <p><i class="fas fa-car"></i> <strong>Selected Brand:</strong>
+                                Honda
+                            </p>
+                        }
+                        else if (Model.selected_brand ==3)
+                        {
+                            <p>
+                                <i class="fas fa-car"></i> <strong>Selected Brand:</strong>
+                                BMW
+                            </p>
+                        }
+                        else if (Model.selected_brand ==4)
+                        {
+                            <p>
+                                <i class="fas fa-car"></i> <strong>Selected Brand:</strong>
+                                Toyota
+                            </p>
+                        }
+                        else if (Model.selected_brand == 5)
+                        {
+                            <p>
+                                <i class="fas fa-car"></i> <strong>Selected Brand:</strong>
+                                Suzuki
+                            </p>
+                        }
+
+                        @if (data2 != null)
+                        {
+                            @if (@data2.package_subscription == 1)
+                            {
+                                <p><i class="fas fa-box"></i> <strong>Package Subscription:</strong>Platinum Performance </p>
+
+                            }
+                            else if (@data2.package_subscription == 9)
+                            {
+                                <p><i class="fas fa-box"></i> <strong>Package Subscription:</strong>Ultimate Showcase </p>
+                            }
+                            else if (@data2.package_subscription == 10)
+                            {
+                                <p><i class="fas fa-box"></i> <strong>Package Subscription:</strong>Pro Dealer Plan </p>
+                            }
+                            else if (@data2.package_subscription == 11)
+                            {
+                                <p><i class="fas fa-box"></i> <strong>Package Subscription:</strong>Exclusive Spotlight </p>
+                            }
+                            else
+                            {
+                                <p><i class="fas fa-box"></i> <strong>Package Subscription:</strong> @data2.package_subscription </p>
+                            }
+                            <p><i class="fas fa-clock"></i> <strong>Subscription Date:</strong> @data2.subscription_date.ToShortDateString()</p>
+                        }
+
+                        @if (Model.dealers != null && Model.dealers.Any())
+                        {
+                            <p><i class="fas fa-users"></i> <strong>Dealers:</strong></p>
+                            <ul class="dealers-list">
+                                    <li>@Model.dealers</li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile-card {
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+        border: none;
+        border-radius: 12px;
+        padding: 25px 30px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        text-align: left;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+    .profile-title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+    }
+
+    .profile-info p {
+        font-size: 18px;
+        color: #444;
+        margin: 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+        .profile-info p strong {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+    .dealers-list {
+        margin-top: 15px;
+        padding-left: 25px;
+        list-style-type: circle;
+    }
+
+        .dealers-list li {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+            .dealers-list li::marker {
+                color: #007bff;
+            }
+
+    /* Add subtle card separators */
+    .profile-info p:not(:last-child) {
+        border-bottom: 1px dashed #ddd;
+        padding-bottom: 8px;
+    }
+
+    /* Icon styling */
+    .profile-info p i {
+        font-size: 20px;
+        color: #007bff;
+    }
+
+    .profile-title {
+        font-size: 24px;
+    }
+
+    .profile-info p {
+        font-size: 16px;
+    }
+
+    .dealers-list li {
+        font-size: 16px;
+    }
+
+    }
+</style>

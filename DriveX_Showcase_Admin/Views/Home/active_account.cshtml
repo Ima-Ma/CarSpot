@@ -1,0 +1,77 @@
+﻿@Html.Partial("Header")
+@model Dealer_Account
+@{
+    var data2 = ViewBag.data2 as List<DriveX_Showcase_Admin.Models.Packages>;
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"> Subscribe Package To Activate</h4>
+                    <form class="forms-sample" method="post">
+                       <div class="row">
+                           <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Dealer Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="exampleInputUsername2" name="dealer_name" required value="@Model.dealers" readonly>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Dealer IdCode</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="exampleInputEmail2" name="dealer_IdCode" required value="@Model.dealer_IdCode" readonly>
+                                    </div>
+                                </div>
+                           </div>
+                       </div>
+                        <div class="form-group row">
+                            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Select Subscription</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="package_subscription" required>
+                                    @foreach(var item in data2)
+                                    {
+                                        <option value="@item.id">@item.package_name</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="subscriptionDate" class="col-sm-3 col-form-label">Subscription Date</label>
+                            <div class="col-sm-9">
+                                <input type="datetime-local" class="form-control" id="subscriptionDate" name="subscription_date" readonly required>
+                            </div>
+                        </div>
+
+                        <script>
+                            var currentDate = new Date();
+                            var formattedDate = currentDate.toISOString().slice(0, 16); 
+                            document.getElementById("subscriptionDate").value = formattedDate;
+                        </script>
+
+                        <div class="form-group row">
+                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Dealer Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="exampleInputPassword2" name="email" value="@Model.email" readonly required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label"> Registration Date</label>
+                            <div class="col-sm-9">
+                                <input type="datetime" class="form-control" id="exampleInputConfirmPassword2" name="dealer_registration_date" required value="@Model.registration_date" readonly>
+                            </div>
+                        </div>
+                       
+                        <button type="submit" class="btn btn-primary w-100 mr-2">Activate Now!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    @Html.Partial("Footer")

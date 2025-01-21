@@ -1,0 +1,51 @@
+﻿@Html.Partial("Header")
+@model Contact
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"> Reply To  Users</h4>
+                    <form class="forms-sample" method="post">
+                       <div class="row">
+                           <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">User Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"  name="name" value="@Model.Name" readonly>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label"> User Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"  name="email" value="@Model.Email" readonly>
+                                    </div>
+                                </div>
+                           </div>
+                       </div>
+                        <div class="form-group row">
+                            <label for="exampleInputMobile" class="col-sm-3 col-form-label">User Query</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="message" rows="3" readonly>@Model.Message</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Reply User</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="reply" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary w-100 mr-2">Reply Now!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    @Html.Partial("Footer")
